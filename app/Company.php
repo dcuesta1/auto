@@ -30,18 +30,37 @@ class Company extends BaseModel
     ];
 
     // Relationships
+
+    #TODO: fix the owner mess
     public function owner()
     {
-        $this->hasMany('App\User')->where('type', '=', 3);
+        return $this->getowner->first();
     }
 
-    public function employees()
+    public function getowner()
     {
-        $this->hasMany('App\User')->where('type', '=', 2);
+        return $this->hasMany('App\User')->whereHas('role', function ($query) {
+            $query->where('name', '=', Role::OWNER);
+        });
     }
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
+
+    public function customers()
+    {
+        return $this->hasMany('App\Customer');
+    }
+
+    // public function employees()
+    // {
+    //     return $this->hasMany('App\User');
+    // }
 
     public function employeeRoles()
     {
-        return $this->hasMany('App\Roles');
+        return $this->hasMany('App\Role');
     }
 }

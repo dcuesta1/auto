@@ -4,7 +4,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Car extends Model
+class Vehicle extends Model
 {
     use SoftDeletes;
 
@@ -12,14 +12,14 @@ class Car extends Model
         'model', 
         'make', 
         'year', 
-        'number'
+        'vin'
     ];
 
     protected $casts = [
         'year' => 'integer',
     ];
 
-    function customer()
+    function customers()
     {
         return $this->belongsToMany('App\Customer');
     }

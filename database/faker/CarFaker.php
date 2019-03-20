@@ -1,18 +1,12 @@
 <?php
-/**
- * Collection of dummy data for car rows.
- *
- * @author: Cuesta
- */
+
 namespace Database\Faker;
+
+use Arr;
 
 class CarFaker 
 {
-    public  $make,
-            $model,
-            $number;
-
-    private $_makeModels = [
+    private static $_makeModels = [
         'Ford' => [
             'Focus',
             'Fiesta',
@@ -25,7 +19,7 @@ class CarFaker
         ]
     ];
 
-    private $_vins = [
+    private static $_vins = [
         '1GNCS13WXT2237074',
         '3FADP4EJ9CM135118',
         '1FMHK7F87BGA30217',
@@ -41,25 +35,18 @@ class CarFaker
         '5FNRL38289B028424'
     ];
 
-    public function __construct()
+    public static function vin()
     {
-        $this->getMakeModel();
-        $this->getVinNumber();
-        unset($this->_vins);
-        unset($this->_makeModels);
-
-        return $this;
+        return Arr::random(self::$_vins);
     }
 
-    public function getVinNumber()
+    public static function make()
     {
-        $this->number = $this->_vins[array_rand($this->_vins)];
+        return 'Ford';
     }
 
-    public function getMakeModel()
+    public static function model()
     {
-        $this->make = array_rand($this->_makeModels);
-        $model = array_rand($this->_makeModels[$this->make]);
-        $this->model = $this->_makeModels[$this->make][$model];
+        return Arr::random(self::$_makeModels['Ford']);
     }
 }

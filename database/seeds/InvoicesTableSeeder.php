@@ -21,7 +21,10 @@ class InvoicesTableSeeder extends Seeder
 
     public function run()
     {
-        factory(App\Invoice::class, 2)->create()->each(function (Invoice $invoice) {
+
+        $company = App\Company::find(1);
+
+        factory(App\Invoice::class, 2)->create()->each(function (Invoice $invoice) use ($company) {    
             $net = $invoice->cost;
             $fees = $net*.03;
             $tip = $this->faker->randomNumber(4);
@@ -37,10 +40,6 @@ class InvoicesTableSeeder extends Seeder
             $payment->cc_last_four = $this->faker->randomNumber(4);
             $invoice->payments()->save($payment);
 
-            $fakerCar = new CarFaker();
-            $car = new Car((array) $fakerCar);
-            $car->year = $this->faker->numberBetween($min = 2000, $max = 2017);
-            $car->customer_id =
 
             $fakerItem = new ItemFaker();
             $item = new Item((array) $fakerItem);

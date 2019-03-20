@@ -16,7 +16,10 @@ class Invoice extends Model
 
     protected $fillable = [
         'vehicle_id',
-        'discount'
+        'discount',
+        'total',
+        'subtotal',
+        'status'
     ];
 
     protected $guarded = [
@@ -35,6 +38,11 @@ class Invoice extends Model
     ];
 
     // RELATIONSHIPS
+
+    public function employee()
+    {
+        return $this->belongsTo('App\User');
+    }
 
     public function payments()
     {

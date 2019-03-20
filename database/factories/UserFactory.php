@@ -40,3 +40,17 @@ $factory->state(App\User::class, 'owner', [
 $factory->state(App\User::class, 'employee', [
     'company_id' => 1
 ]);
+
+$factory->afterCreatingState(App\User::class, 'owner', function ($user, $faker) {
+    $roles = $user->company->employeeRoles;
+
+    foreach( $roles as $role ) {
+        if($role->name == App\Role::OWNER) {
+            $user->role()->save($role);
+        }
+    }
+});
+
+// $factory->afterCreatingState(App\User::class, 'employee', function ($user, $faker) {
+   
+// });

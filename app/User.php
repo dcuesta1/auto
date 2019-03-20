@@ -54,6 +54,11 @@ class User extends BaseAuthenticatable
         return $this->belongsTo('App\Company');
     }
 
+    public function role()
+    {
+        return $this->belongsToMany('App\Role');
+    }
+
     // MUTATORS
     
     public function getNameAttribute($value)

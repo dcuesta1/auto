@@ -29,9 +29,19 @@ class Customer extends Model
 
     /* Relationships */
 
-    public function vehicle()
+    public function vehicles()
     {
         return $this->belongsToMany('App\Vehicle');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo('App\Company');
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany('App\Invoice');
     }
 
     /* Getters */

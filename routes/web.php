@@ -26,6 +26,7 @@ Route::get('/mail', function() {
 
 
 Route::get('test', function() {
-    $ip = $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'];
-    return $ip;
+   $company = App\Company::find(1);
+
+   echo $company->owner()->name;
 });
