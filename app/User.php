@@ -2,38 +2,62 @@
 
 namespace App;
 
+use App\{authToken, Invoice};
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends BaseAuthenticatable
 {
-    use Notifiable;
+    const DEVELOPER = 1;
+    const OWNER = 2;
+    const EMPLOYEE = 3;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    use Notifiable, SoftDeletes;
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    protected $fillable = ['name', 'email', 'username'];
+    protected $hidden = ['password', 'pivot'];
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'id' => 'integer',
     ];
+
+    public function isDeveloper()
+    {
+    	return ($this->type == self::DEVELOPER);
+    }
+
+    public function isOwner()
+    {
+        return ($this->type == self::OWNER);
+    }
+
+    public function isEmployee()
+    {
+        return ($this->type == seld::EMPLOYEE);
+    }
+
+	// RELATIONSHIPS
+
+	public function authTokens()
+	{
+		return $this->hasMany('App\AuthToken');
+	}
+
+	public function invoices()
+    {
+        return 
+            $this->hasMany('App\Invoice')
+                ->orderByDesc('created_at');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo('App\Company');
+    }
+
+    // MUTATORS
+    
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
 }

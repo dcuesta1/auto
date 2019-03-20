@@ -41,6 +41,10 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->singleton('TokenAuthentication', function ($app) {
+	return new \App\Helpers\TokenAuthentication();
+});
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

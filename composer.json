@@ -38,8 +38,10 @@
         },
         "classmap": [
             "database/seeds",
-            "database/factories"
-        ]
+            "database/factories",
+            "database/faker"
+        ],
+        "files": ["app/Helpers/helpers.php"]
     },
     "autoload-dev": {
         "psr-4": {

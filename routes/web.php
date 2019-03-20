@@ -15,6 +15,17 @@ Route::post('/contact', 'Web\ContactController');
 
 Route::get('/mail', function() {
 
-    Mail::to(env('ADMIN_EMAIL'))->send(new WebGuestContact);
+    $user = \App\User::find(1);
 
+    Mail::to($user)->send(new WebGuestContact);
+
+});
+
+
+
+
+
+Route::get('test', function() {
+    $ip = $_SERVER['HTTP_USER_AGENT'].$_SERVER['REMOTE_ADDR'];
+    return $ip;
 });
