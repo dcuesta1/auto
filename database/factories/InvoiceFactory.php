@@ -27,3 +27,12 @@ $factory->state(App\Invoice::class, 'pending', function (Faker $faker) {
         'status' => \App\Invoice::PENDING_PAYMENT
     ];
 });
+
+$factory->afterCreating(App\Invoice::class, function ($invoice) {
+    $invoice->items()->save(factory(App\Item::class)->make());
+    $invoice->items()->save(factory(App\Item::class)->states('labor')->make());
+
+    $invoice->invoicePayments()->save(factory(App\InvoicePayment::class)->make([
+        'user_id' => 2
+    ]));
+});

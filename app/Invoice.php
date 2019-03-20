@@ -69,6 +69,11 @@ class Invoice extends Model
         return $this->hasMany('App\Item');
     }
 
+    public function invoicePayments()
+    {
+        return $this->hasMany('App\InvoicePayment');
+    }
+
     /* Helper Functions */
 
     public static function generateNumber($customerId, $userId)

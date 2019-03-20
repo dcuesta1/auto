@@ -41,7 +41,7 @@ $factory->state(App\User::class, 'employee', [
     'company_id' => 1
 ]);
 
-$factory->afterCreatingState(App\User::class, 'owner', function ($user, $faker) {
+$factory->afterCreatingState(App\User::class, 'owner', function ($user) {
     $roles = $user->company->employeeRoles;
 
     foreach( $roles as $role ) {

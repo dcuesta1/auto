@@ -6,28 +6,41 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use phpDocumentor\Reflection\Types\Integer;
 
-class Payment extends Model
+class InvoicePayment extends Model
 {
     use SoftDeletes;
 
     protected $casts = [
         'id' => 'integer',
         'invoice_id' => 'integer',
-        'net' => 'integer',
-        'tip' => 'integer',
-        'fees' => 'integer',
-        'merchant_fees' => 'integer',
-        'cc_last_four' => 'integer',
-        'ref' => 'integer',
-        'type' => 'integer'
+        'user_id' => 'integer',
+        'net' => 'float',
+        'fees' => 'float',
+        'merchant_fees' => 'float',
+        'type' => 'integer',
+        'card' => 'integer',
+        'is_request' => "boolean",
+        'gross' => 'float',
+        'taxes' => 'float'
     ];
 
-    protected $fillable = ['net', 'tip', 'fees', 'type', 'merchant_fees', 'cc_last_four'];
+    protected $fillable = [
+        'net', 
+        'fees', 
+        'type', 
+        'merchant_fees', 
+        'card',
+        'is_request',
+        'reference',
+        'gross',
+        'taxes'
+    ];
+
     protected $hidden = ['pivot'];
 
     const CASH = '1';
-    const CARD_SLIDE = '2';
-    const CARD_ONLINE = '4';
+    const CARD_SWIPPED = '2';
+    const CARD_ENTERED = '4';
 
     public function invoice()
     {

@@ -16,9 +16,9 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('invoice_id');
-            $table->string('reference')->nullable();
             $table->string('name');
-            $table->float('cost');
+            $table->float('price');
+            $table->string('reference')->nullable();
             $table->string('description')->nullable();
             $table->string('provider')->nullable();
             $table->boolean('is_labor')->default(false);

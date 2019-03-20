@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\AuthToken::class, function (Faker $faker) {
     return [
-        'device' => str_random(12),
+        'device' => $faker->uuid,
         'value' => tokenAuth()->hash()
     ];
 });

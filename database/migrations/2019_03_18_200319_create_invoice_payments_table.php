@@ -18,11 +18,13 @@ class CreateInvoicePaymentsTable extends Migration
             $table->bigInteger('invoice_id');
             $table->bigInteger('user_id'); // "employee" that processed the payment.
             $table->float('net');
+            $table->float('gross');
+            $table->float('taxes');
             $table->float('fees');
-            $table->float('merchant_fees')->default(0);
             $table->tinyInteger('type');
+            $table->float('merchant_fees')->nullable();
             $table->integer('card')->nullable(); // last for digits
-            $table->string('reference', 100); // the payment reference number from Square
+            $table->string('reference', 100)->nullable(); // the payment reference number from Square
             $table->boolean('is_request')->default(false);
             $table->timestamps();
             $table->softDeletes();

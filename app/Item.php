@@ -9,6 +9,8 @@ class Item extends Model
 {
     use SoftDeletes;
 
+    const LABOR = 'labor';
+
     protected $fillable = [
         'cost', 
         'description', 
