@@ -11,21 +11,13 @@ class WebGuestContact extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $contactForm;
+
+    public function __construct($contactForm)
     {
-        //
+        $this->contactForm = $contactForm;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
         return $this->from(env('APP_EMAIL'))

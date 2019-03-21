@@ -1,5 +1,8 @@
 <?php
+
 use App\Mail\WebGuestContact;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Company Website Routes
@@ -13,20 +16,6 @@ Route::get('/', function() {
 Route::post('/newsletter/subscribe', 'Web\SubscribeNewsletterController');
 Route::post('/contact', 'Web\ContactController');
 
-Route::get('/mail', function() {
-
-    $user = \App\User::find(1);
-
-    Mail::to($user)->send(new WebGuestContact);
-
-});
-
-
-
-
-
-Route::get('test', function() {
-   $company = App\Company::find(1);
-
-   echo $company->owner()->name;
+Route::get('test', function(Request $request) {
+   dd($request);
 });

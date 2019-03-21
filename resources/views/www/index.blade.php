@@ -32,16 +32,10 @@
                 <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
               </div>
   
-              <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
-                <div class="icon"><i class="fa fa-bar-chart"></i></div>
-                <h4 class="title"><a href="">Dolor Sitema</a></h4>
-                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-              </div>
-  
             </div>
   
             <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-              <img src="img/about-img.svg" class="img-fluid" alt="">
+              <img src="img/mechanic-1.jpg" class="img-fluid" alt="">
             </div>
           </div>
   
@@ -143,29 +137,29 @@
         <div class="container">
           <header class="section-header">
             <h3>Why choose us?</h3>
-            <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
+            <p><b>We go the extra mile, so that you may drive that extra mile!</b></p>
           </header>
   
           <div class="row row-eq-height justify-content-center">
   
             <div class="col-lg-4 mb-4">
               <div class="card wow bounceInUp">
-                  <i class="fa fa-diamond"></i>
+                <i class="fa fa-line-chart"></i>
                 <div class="card-body">
-                  <h5 class="card-title">Corporis dolorem</h5>
-                  <p class="card-text">Deleniti optio et nisi dolorem debitis. Aliquam nobis est temporibus sunt ab inventore officiis aut voluptatibus.</p>
-                  <a href="#" class="readmore">Read more </a>
+                  <h5 class="card-title">EFFICIENCY</h5>
+                  <p class="card-text">Whether you’re bringing a vehicle to our shop for auto repair or general maintenance, you can expect quick and efficient service. We respect that each of our clients’ time is valuable!</p>
+                  {{-- <a href="#" class="readmore">Read more </a> --}}
                 </div>
               </div>
             </div>
   
             <div class="col-lg-4 mb-4">
               <div class="card wow bounceInUp">
-                  <i class="fa fa-language"></i>
+                <i class="fa fa-exclamation-circle"></i>
                 <div class="card-body">
-                  <h5 class="card-title">Voluptates dolores</h5>
-                  <p class="card-text">Voluptates nihil et quis omnis et eaque omnis sint aut. Ducimus dolorum aspernatur.</p>
-                  <a href="#" class="readmore">Read more </a>
+                  <h5 class="card-title">NO SURPRISES</h5>
+                  <p class="card-text">At Beatty's Auto Repair, we’re upfront and honest. You’ll pay for only the auto repair services you’ve agreed to – and the price you’ll see on your auto repair invoice will be the price in the estimate.</p>
+                  {{-- <a href="#" class="readmore">Read more </a> --}}
                 </div>
               </div>
             </div>
@@ -176,7 +170,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Eum ut aspernatur</h5>
                   <p class="card-text">Autem quod nesciunt eos ea aut amet laboriosam ab. Eos quis porro in non nemo ex. </p>
-                  <a href="#" class="readmore">Read more </a>
+                  {{-- <a href="#" class="readmore">Read more </a> --}}
                 </div>
               </div>
             </div>
@@ -235,15 +229,6 @@
                       Best mechanic ever!!! He seems to know about any car, in a second. He can diagnose in minutes and is right on, he is super nice and very reasonable, and gets things done. I am blessed to have him as a mechanic!!!
                     </p>
                 </div>
-      
-                <div class="testimonial-item">
-                  <img src="img/testimonial-5.jpg" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                  <p>
-                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  </p>
-                </div>
   
               </div>
   
@@ -271,7 +256,7 @@
   
             <div class="col-lg-3 col-md-4 col-xs-6">
               <div class="client-logo">
-                <img src="img/clients/client-1.png" class="img-fluid" alt="">
+                <img src="img/bennet.jpg" class="img-fluid" alt="">
               </div>
             </div>
             
@@ -356,7 +341,8 @@
               <div class="form">
                 <div id="sendmessage">Your message has been sent. Thank you!</div>
                 <div id="errormessage"></div>
-                <form action="" method="post" role="form" class="contactForm">
+                <form action="/contact" method="post" role="form" class="contactForm">
+                  @csrf
                   <div class="form-row">
                     <div class="form-group col-lg-6">
                       <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />

@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\User;
 use App\Http\Controllers\Controller;
+use App\Mail\WebGuestContact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    /**
-     * Subscribes user to our newsletter by simply adding their email to our database.
-     *
-     * @return View
-     */
     public function __invoke(Request $request)
     {
         $validation = $request->validate([
@@ -22,6 +18,21 @@ class ContactController extends Controller
             'message' => 'required'
         ]);
 
-        Mail::to(env('ADMIN_EMAIL'))->send('hello world');
+        $form = new ContactFormModel();
+        $form->email = $request->email;
+        $form->name = $request->name;
+        $form->subject = $request->subject;
+        $form->message = $request->message;
+
+        $to = config('app.website_admin_email');
+        Mail::to($to)->send(new WebGuestContact($form));
+
+        if (Mail::failures()) {
+            return response("Oops. Something went wrong. We couldn't send your email.", 200)
+                  ->header('Content-Type', 'text/plain');
+        }
+
+        return response('OK', 200)
+                  ->header('Content-Type', 'text/plain');
     }
 }

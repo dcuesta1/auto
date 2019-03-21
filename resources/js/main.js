@@ -65,13 +65,14 @@
 
         if ($('body').hasClass('mobile-nav-active')) {
           $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+          $('.mobile-nav-toggle i').toggleClass('ion-ios-menu');
           $('.mobile-nav-overly').fadeOut();
         }
         return false;
       }
     }
   });
+
 
   // Navigation active state on scroll
   var nav_sections = $('section');
@@ -89,25 +90,6 @@
         main_nav.find('li').removeClass('active');
         main_nav.find('a[href="#'+$(this).attr('id')+'"]').parent('li').addClass('active');
       }
-    });
-  });
-
-  // jQuery counterUp (used in Whu Us section)
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 1000
-  });
-
-  // Porfolio isotope and filter
-  $(window).on('load', function () {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item'
-    });
-    $('#portfolio-flters li').on( 'click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-  
-      portfolioIsotope.isotope({ filter: $(this).data('filter') });
     });
   });
 

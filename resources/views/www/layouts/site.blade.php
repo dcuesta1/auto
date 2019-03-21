@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8">
   <title>Complete Auto Repair Services for Titusville, Mims area</title>
@@ -106,7 +106,7 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-contact">
+          <div class="col-lg-6 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
               631b Childre Ave <br>
@@ -116,22 +116,23 @@
             </p>
 
             <div class="social-links">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              {{-- <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> --}}
               <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              {{-- <a href="#" class="instagram"><i class="fa fa-instagram"></i></a> --}}
               <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
               <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
             </div>
 
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-newsletter">
+          {{-- <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-            <form action="" method="post">
+            <form action="/newsletter/subscribe" method="post">
+              @csrf
               <input type="email" name="email"><input type="submit"  value="Subscribe">
             </form>
-          </div>
+          </div> --}}
 
         </div>
       </div>
@@ -145,7 +146,7 @@
   </footer><!-- #footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <!-- <div id="preloader"></div> -->
+  <div id="preloader"></div>
 
   <!-- JavaScript -->
   <script src="js/vendors.js"></script>
