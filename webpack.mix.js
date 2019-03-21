@@ -23,7 +23,4 @@ mix.scripts([
    ], 'public/css/cuesta-light19.min.css')
    .copyDirectory('resources/lib/font-awesome/fonts', 'public/fonts')
    .copyDirectory('resources/lib/ionicons/fonts', 'public/fonts')
-   .copyDirectory('resources/img', 'public/img')
-   .browserSync({
-      proxy: 'auto.test'
-   });   
+   .copyDirectory('resources/img', 'public/img'); 
