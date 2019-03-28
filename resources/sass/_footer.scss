@@ -1,0 +1,111 @@
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+#footer {
+    background: #00428a;
+    padding: 0 0 30px 0;
+    color: #eee;
+    font-size: 14px;
+    .footer-top {
+      background: #004a99;
+      padding: 60px 0 30px 0;
+      .footer-info {
+        margin-bottom: 30px;
+        h3 {
+          font-size: 34px;
+          margin: 0 0 20px 0;
+          padding: 2px 0 2px 0;
+          line-height: 1;
+          font-family: "Montserrat", sans-serif;
+          color: #fff;
+          font-weight: 400;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+        }
+        p {
+          font-size: 13px;
+          line-height: 24px;
+          margin-bottom: 0;
+          font-family: "Montserrat", sans-serif;
+          color: #ecf5ff;
+        }
+      }
+      .social-links a {
+        font-size: 18px;
+        display: inline-block;
+        background: #007bff;
+        color: #fff;
+        line-height: 1;
+        padding: 8px 0;
+        margin-right: 4px;
+        border-radius: 50%;
+        text-align: center;
+        width: 36px;
+        height: 36px;
+        transition: 0.3s;
+        &:hover {
+          background: #0067d5;
+          color: #fff;
+        }
+      }
+      h4 {
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        position: relative;
+        padding-bottom: 10px;
+      }
+      .footer-links {
+        margin-bottom: 30px;
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          li {
+            padding: 8px 0;
+            &:first-child {
+              padding-top: 0;
+            }
+          }
+          a {
+            color: #ecf5ff;
+            &:hover {
+              color: #74b5fc;
+            }
+          }
+        }
+      }
+      .footer-contact {
+        margin-bottom: 30px;
+        p {
+          line-height: 26px;
+        }
+        a {
+          &:link, &:visited {
+            color: #9bb2cc;
+            text-decoration: underline;
+          }
+          &:link i, &:visited i {
+            color: #fff;
+          }
+        }
+      }
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+    }
+    .credits {
+      text-align: center;
+      font-size: 13px;
+      color: #f1f7ff;
+      a {
+        color: #bfddfe;
+        &:hover {
+          color: #f1f7ff;
+        }
+      }
+    }
+  }

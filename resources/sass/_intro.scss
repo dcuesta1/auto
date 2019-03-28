@@ -1,0 +1,80 @@
+/*--------------------------------------------------------------
+# Intro Section
+--------------------------------------------------------------*/
+
+#intro {
+    width: 100%;
+    position: relative;
+    padding-top: 80px;
+    .intro-item {
+      background-size: cover;
+      width: 100%;
+      height: 450px;
+      padding: 50px 195px;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+    }
+    .intro-img {
+      width: 50%;
+      float: right;
+    }
+    .intro-info {
+      width: 50%;
+      float: left;
+      h2 {
+        color: #fff;
+        margin-bottom: 40px;
+        font-size: 48px;
+        font-weight: 700;
+        span {
+          color: #74b5fc;
+          text-decoration: underline;
+        }
+      }
+      .btn-get-started, .btn-services {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding: 10px 32px;
+        border-radius: 50px;
+        transition: 0.5s;
+        margin: 0 20px 20px 0;
+        color: #fff;
+      }
+      .btn-get-started {
+        background: #007bff;
+        border: 2px solid #007bff;
+        color: #fff;
+        &:hover {
+          background: none;
+          border-color: #fff;
+          color: #fff;
+        }
+      }
+      .btn-services {
+        border: 2px solid #fff;
+        &:hover {
+          background: #007bff;
+          border-color: #007bff;
+          color: #fff;
+        }
+      }
+    }
+    &.owl-carousel .owl-nav {
+      position: absolute;
+      top: 265px;
+      z-index: 999;
+      width: 100%;
+      padding: 0 120px;
+      height: auto;
+      i {
+        font-size: 40px;
+        color: white;
+      }
+      .owl-next {
+        float: right;
+      }
+    }
+  }

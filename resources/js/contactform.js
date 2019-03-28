@@ -1,15 +1,15 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function(jQuery) {
     "use strict";
   
     //Contact
-    $('form.contactForm').submit(function() {
-      var f = $(this).find('.form-group'),
+    jQuery('form.contactForm').submit(function() {
+      var f = jQuery(this).find('.form-group'),
         ferror = false,
         emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
   
       f.children('input').each(function() { // run all inputs
   
-        var i = $(this); // current input
+        var i = jQuery(this); // current input
         var rule = i.attr('data-rule');
   
         if (rule !== undefined) {
@@ -59,7 +59,7 @@ jQuery(document).ready(function($) {
       });
       f.children('textarea').each(function() { // run all inputs
   
-        var i = $(this); // current input
+        var i = jQuery(this); // current input
         var rule = i.attr('data-rule');
   
         if (rule !== undefined) {
@@ -89,22 +89,22 @@ jQuery(document).ready(function($) {
         }
       });
       if (ferror) return false;
-      else var str = $(this).serialize();
-      var action = $(this).attr('action');
-      $.ajax({
+      else var str = jQuery(this).serialize();
+      var action = jQuery(this).attr('action');
+      jQuery.ajax({
         type: "POST",
         url: action,
         data: str,
         success: function(msg) {
           // alert(msg);
           if (msg == 'OK') {
-            $("#sendmessage").addClass("show");
-            $("#errormessage").removeClass("show");
-            $('.contactForm').find("input, textarea").val("");
+            jQuery("#sendmessage").addClass("show");
+            jQuery("#errormessage").removeClass("show");
+            jQuery('.contactForm').find("input, textarea").val("");
           } else {
-            $("#sendmessage").removeClass("show");
-            $("#errormessage").addClass("show");
-            $('#errormessage').html(msg);
+            jQuery("#sendmessage").removeClass("show");
+            jQuery("#errormessage").addClass("show");
+            jQuery('#errormessage').html(msg);
           }
   
         }

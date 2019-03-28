@@ -1,0 +1,38 @@
+// Bootstrap Core
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// Bootstrap Modules
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/media";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+// Vendors
+@import "../../node_modules/animate.css/animate.min.css";
+@import "../../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../../node_modules/ionicons/dist/css/ionicons.min.css";
+@import "../../node_modules/owl.carousel/dist/assets/owl.carousel.min.css";
+
+// Theme Style
+@import "common";
+@import "header";
+@import "footer";
+@import "nav";
+@import "mobileNav";
+@import "intro";
+@import "about";
+@import "whyus";
+@import "services";
+@import "contact";
+@import "testimonials";
+@import "clients";
+@import "media";

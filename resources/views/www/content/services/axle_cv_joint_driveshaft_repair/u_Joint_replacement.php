@@ -1,0 +1,6 @@
+<?php
+
+return [
+    'title' => 'The Basics Behind U-Joint Replacement Services',
+    'desc' => 'Universal joints, often referred to as u-joints, are flexible couplings that serve an important role on your vehicle. One of the primary duties of a u-joint is to transmit the rotational force between the transmission, the driveshaft, and the differentials, which are responsible for turning your vehicle’s drive wheels. As a critical linking component, a u-joint should be flexible enough to compensate for angle and alignment changes between the driveshaft and differentials. U-joints consist of four legs, or trunnions, that extend from the center cross, or body. The legs are covered with bearing caps and are housed within the yoke, which is designed to pivot and spin as they rotate with the driveshaft. Although many original equipment u-joints are sealed, some aftermarket u-joints are greasable and should be lubricated periodically. Understanding the type of u-joints on your vehicle will help you determine the proper maintenance intervals and decide when a u-joint should be replaced.'
+];

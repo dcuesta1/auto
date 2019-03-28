@@ -2,25 +2,24 @@ const mix = require('laravel-mix');
 
 mix.scripts([
       'resources/js/contactform.js',
-      'resources/js/main.js'
-   ], 'public/js/cuesta-light19.js')
-   .scripts([
-      'resources/lib/jquery/jquery.min.js',
-      'resources/lib/jquery/jquery-migrate.min.js',
-      'resources/lib/bootstrap/js/bootstrap.bundle.min.js',
-      'resources/lib/easing/easing.min.js',
       'resources/lib/mobile-nav/mobile-nav.js',
-      'resources/lib/wow/wow.min.js',
-      'resources/lib/owlcarousel/owl.carousel.min.js',
+      'resources/js/main.js'
+   ], 'public/js/cuesta-light19.es6.js')
+   .babel('public/js/cuesta-light19.es6.js', 'public/js/cuesta-light19.js')
+   .scripts([
+      'node_modules/jquery/dist/jquery.min.js',
+      'node_modules/dist/jquery-migrate.min.js',
+      'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+      'node_modules/jquery.easing/jquery.easing.min.js',
+      'node_modules/wow.js/dist/wow.min.js',
+      'node_modules/owl.carousel/dist/owl.carousel.min.js',
    ], 'public/js/vendors.js')
-   .styles([
-      'resources/lib/bootstrap/css/bootstrap.min.css',
-      'resources/lib/font-awesome/css/font-awesome.min.css',
-      'resources/lib/animate/animate.min.css',
-      'resources/lib/ionicons/css/ionicons.min.css',
-      'resources/lib/owlcarousel/assets/owl.carousel.min.css',
-      'resources/css/style.css'
-   ], 'public/css/cuesta-light19.min.css')
+   .sass('resources/sass/theme.scss', 'public/css')
    .copyDirectory('resources/lib/font-awesome/fonts', 'public/fonts')
    .copyDirectory('resources/lib/ionicons/fonts', 'public/fonts')
    .copyDirectory('resources/img', 'public/img'); 
+
+// versionning
+if (mix.config.inProduction) {
+   mix.version();
+ }
