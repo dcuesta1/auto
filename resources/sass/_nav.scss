@@ -30,12 +30,22 @@
       font-family: "Montserrat", sans-serif;
       font-weight: 500;
       &:hover {
-        color: #007bff;
+        color: #0e7abe;
         text-decoration: none;
+      }
+      
+      &.btn {
+        background: #004289;
+        color: $white;
+      
+        &:hover {
+          color: #a3c7ee;
+          box-shadow: 2px 2px 3px #212121;
+        }
       }
     }
     .active > a, li:hover > a {
-      color: #007bff;
+      color: #0e7abe;
       text-decoration: none;
     }
     .drop-down {
@@ -67,11 +77,11 @@
           font-size: 13px;
           color: #004289;
           &:hover {
-            color: #007bff;
+            color: #0e7abe;
           }
         }
         .active > a, li:hover > a {
-          color: #007bff;
+          color: #0e7abe;
         }
       }
       > a:after {

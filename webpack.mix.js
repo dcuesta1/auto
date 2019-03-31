@@ -15,8 +15,7 @@ mix.scripts([
       'node_modules/owl.carousel/dist/owl.carousel.min.js',
    ], 'public/js/vendors.js')
    .sass('resources/sass/theme.scss', 'public/css')
-   .copyDirectory('resources/lib/font-awesome/fonts', 'public/fonts')
-   .copyDirectory('resources/lib/ionicons/fonts', 'public/fonts')
+   // .copyDirectory('resources/lib/font-awesome/fonts', 'public/fonts')
    .copyDirectory('resources/img', 'public/img'); 
 
 // versionning

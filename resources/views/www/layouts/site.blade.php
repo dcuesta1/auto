@@ -27,6 +27,9 @@
 
 <body>
   <header id="header" class="fixed-top">
+    <a href="tel:+13212891668" class="tap-to-call d-sm-none d-md-none d-lg-none d-xl-none">
+      Tap here to call us: (321) 289-1668
+    </a>
     <div class="container">
 
       <div class="logo float-left">
@@ -58,7 +61,12 @@
               <li><a href="/services/transmission_repair">Transmission Repair</a></li>
             </ul>
           </li> 
-          <li><a href="{{ URL::to('/#contact') }}">Contact Us</a></li>
+          <li>
+            <a class="btn" href="tel:+3212891668">
+              <i class="fa fa-phone"></i>
+              321-289-1668
+            </a>
+          </li>
         </ul>
       </nav><!-- .main-nav -->
       
@@ -84,19 +92,10 @@
 
           <div class="col-lg-4 col-md-6 footer-info">
             <h3>NewBiz</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+            <p>From bumper to bumper, we have you covered. We utilize the very latest in automotive repair technology for a fast turnaround time, ensuring you spend less time in the shop, and more time on the road.</p>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Menu</h4>
-            <ul>
-              <li><a href="{{ URL::to('/') }}">Home</a></li>
-              <li><a href="{{ URL::to('/#about') }}">About us</a></li>
-              <li><a href="{{ URL::to('/#services') }}">Services</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-6 col-md-6 footer-contact">
+          <div class="col-lg-4 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
               631b Childre Ave <br>

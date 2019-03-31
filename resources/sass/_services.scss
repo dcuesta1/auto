@@ -3,14 +3,13 @@
 
 #services {
     padding: 60px 0 40px 0;
-    box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
     .box {
       padding: 30px;
       position: relative;
       overflow: hidden;
       border-radius: 10px;
       margin: 0 10px 40px 10px;
-      background: #fff;
+      background: #fafafa;
       box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
       transition: all 0.3s ease-in-out;
       &:hover {
@@ -18,15 +17,14 @@
         transform: translateY(-5px);
       }
     }
-    .icon {
+    .shop-icon {
       position: absolute;
-      left: -10px;
+      left: -17px;
       top: calc(50% - 32px);
-      i {
-        font-size: 64px;
-        line-height: 1;
-        transition: 0.5s;
-      }
+      width: 77px;
+      height: 65px;
+      transition: 0.5s;
+      background: url('../img/car-icons.png') #0e7abe;
     }
     .title {
       margin-left: 40px;
@@ -38,7 +36,7 @@
       }
     }
     .box:hover .title a {
-      color: #007bff;
+      color: #0e7abe;
     }
     .description {
       font-size: 14px;

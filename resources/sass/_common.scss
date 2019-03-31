@@ -1,11 +1,33 @@
+@font-face {
+  font-family: Glacial;
+  src: url('../fonts/glacialindifference-regular-webfont.woff2');
+}
+
+@font-face {
+  font-family: Glacial;
+  src: url("../fonts/glacialindifference-bold-webfont.woff2");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Nexa;
+  src: url("../fonts/nexa_bold-webfont.woff2");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Nexa;
+  src: url("../fonts/nexa_light-webfont.woff2");
+}
+
 body {
     background: #fff;
     color: #444;
-    font-family: "Open Sans", sans-serif;
+    font: 400 1.125em/1.75 'Glacial',Verdana,sans-serif;
   }
   
   a {
-    color: #007bff;
+    color: #0e7abe;
     transition: 0.5s;
     &:hover, &:active, &:focus {
       color: #0b6bd3;
@@ -31,7 +53,7 @@ body {
   .back-to-top {
     position: fixed;
     display: none;
-    background: #007bff;
+    background: #0e7abe;
     color: #fff;
     width: 44px;
     height: 44px;
@@ -66,7 +88,7 @@ body {
       top: calc(50% - 30px);
       left: calc(50% - 30px);
       border: 6px solid #f2f2f2;
-      border-top: 6px solid #007bff;
+      border-top: 6px solid #0e7abe;
       border-radius: 50%;
       width: 60px;
       height: 60px;
@@ -121,7 +143,7 @@ body {
       margin: auto;
       font-size: 15px;
       padding-bottom: 60px;
-      color: #556877;
+      color: #47485c;
       width: 50%;
     }
   }

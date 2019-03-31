@@ -1,80 +1,115 @@
 /*--------------------------------------------------------------
-# Intro Section
+# Banner Section & Coupon-review Section
 --------------------------------------------------------------*/
-
+//Banner
 #intro {
-    width: 100%;
-    position: relative;
-    padding-top: 80px;
-    .intro-item {
-      background-size: cover;
-      width: 100%;
-      height: 450px;
-      padding: 50px 195px;
-      background-position: center bottom;
-      background-repeat: no-repeat;
-    }
-    .intro-img {
-      width: 50%;
-      float: right;
-    }
-    .intro-info {
-      width: 50%;
-      float: left;
-      h2 {
-        color: #fff;
-        margin-bottom: 40px;
-        font-size: 48px;
-        font-weight: 700;
-        span {
-          color: #74b5fc;
-          text-decoration: underline;
-        }
+  width: 100%;
+  padding: 161px 0 72px 0;
+  text-align: center;
+  text-transform: uppercase;
+  background: url('../img/slide3.jpg');
+  color: #fff;
+  .intro-info {
+    h2 {
+      strong {
+        display: block;
+        font: 700 73px/1 'Glacial',Verdana,Sans-serif;
+        letter-spacing: 0;
       }
-      .btn-get-started, .btn-services {
-        font-family: "Montserrat", sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        display: inline-block;
-        padding: 10px 32px;
-        border-radius: 50px;
-        transition: 0.5s;
-        margin: 0 20px 20px 0;
-        color: #fff;
-      }
-      .btn-get-started {
-        background: #007bff;
-        border: 2px solid #007bff;
-        color: #fff;
-        &:hover {
-          background: none;
-          border-color: #fff;
+    }
+    p {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 770px;
+      letter-spacing: 3px;
+      line-height: 1.6em;
+    }
+  }
+}
+
+// Coupon and Review Section
+#coupon-review-section {
+  position: relative;
+  margin-bottom: 20px;
+  min-height: 370px;
+  .couponList {
+    .coupon {
+      position: relative;
+      margin: 30px 50px 40px;
+      padding: 50px 70px;
+      padding-right: 0;
+      min-height: 330px;
+      border: none;
+      border-radius: 80px;
+      border-bottom-left-radius: 0;
+      background: #0d7abd;
+      overflow: hidden;
+      -webkit-box-shadow: 0 5px 30px 4px rgba(0,43,90,.7);
+      -moz-box-shadow: 0 5px 30px 4px rgba(0,43,90,.7);
+      box-shadow: 0 5px 30px 4px rgba(0,43,90,.7);
+      .title {
+        color: #251967;
+        font: 700 2.063em/1.4em 'Nexa',Arial,sans-serif;
+        strong {
+          display: block;
           color: #fff;
+          font: 700 74px/1em 'Glacial',Arial,sans-serif;
+          text-transform: uppercase;
         }
       }
-      .btn-services {
-        border: 2px solid #fff;
-        &:hover {
-          background: #007bff;
-          border-color: #007bff;
-          color: #fff;
-        }
-      }
-    }
-    &.owl-carousel .owl-nav {
-      position: absolute;
-      top: 265px;
-      z-index: 999;
-      width: 100%;
-      padding: 0 120px;
-      height: auto;
-      i {
-        font-size: 40px;
-        color: white;
-      }
-      .owl-next {
-        float: right;
+      .content{
+        color: #dfe9ff;
+        font: 400 1.063em/1.4em 'Glacial',Arial,sans-serif
       }
     }
   }
+  #testimonials {
+    .section-header {
+      text-transform: uppercase;
+      h2 {
+        margin: 0;
+        margin-left: -35px;
+        color: #dfe9ff;
+        font: 700 2.8em/1.4em 'Glacial',Verdana,sans-serif;
+        text-transform: uppercase;
+      }
+    }
+    .testimonial-item {
+      h3 {
+        color: #012750;
+        display: inline-block;
+        padding-left: 0px;
+        padding-top: 4px;
+        margin-bottom: 10px;
+        font: 700 1.5em/1.4em 'Nexa',Verdana,Sans-serif;
+      }
+      p {
+        margin: 0 0 .8em;
+        color: #818181;
+        font: italic 300 1.063em/1.2em "Georgia",Verdana,sans-serif;
+      }
+      .testimonial-rating {
+        padding-bottom: 20px;
+        display: inline-block;
+        i {
+          color: $yellow;
+        }
+      }
+    }
+    .owl-nav, .owl-dots {
+      margin-top: 5px;
+      text-align: center;
+    }
+    .owl-dot {
+      display: inline-block;
+      margin: 0 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #ddd;
+      &.active {
+        background-color: #0d7abd;
+      }
+    }
+  }
+}

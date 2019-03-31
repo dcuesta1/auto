@@ -8,11 +8,21 @@
     z-index: 997;
     transition: all 0.5s;
     padding: 20px 0;
-    background: #fff;
+    background: $white;
     box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.3);
     &.header-scrolled, &.header-pages {
       height: 60px;
       padding: 10px 0;
+    }
+    .tap-to-call {
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background: #00366f;
+      color: #fff;
+      font-weight: bold;
+      display: block;
+      width: 100%;
     }
     .logo {
       h1 {
@@ -34,8 +44,8 @@
       }
       img {
         padding: 0;
-        margin: 7px 0;
-        max-height: 26px;
+        margin: -40px 0 0 0;
+        max-height: 130px;
       }
     }
   }
