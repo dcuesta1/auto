@@ -161,7 +161,7 @@
                   <div class="shop-icon shop-icon-brakes"></div>
                 </div>
                 <h4 class="title"><a href="">Brakes Repair</a></h4>
-                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                <p class="description">A fully functioning brake system is crucial to your safety, the safety of your passengers, and the safety of other drivers on the road...</p>
               </div>
             </div>
             <div data-anchor="/services/belts_and_hoses" class="services-item clickable col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
@@ -170,7 +170,7 @@
                   <div class="shop-icon shop-icon-belts"></div>
                 </div>
                 <h4 class="title"><a href="">Belts &amp; Hoses</a></h4>
-                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                <p class="description">Your vehicle’s belts and hoses are involved in processes within the cooling system, air conditioning system, charging system, and engine...</p>
               </div>
             </div>
   
