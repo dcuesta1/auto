@@ -1,6 +1,6 @@
 <?php
 
-use App\Mail\WebGuestContact;
+use Backend\Mail\WebGuestContact;
 use Illuminate\Http\Request;
 
 /*
