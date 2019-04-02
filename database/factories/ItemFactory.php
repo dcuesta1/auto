@@ -3,7 +3,7 @@
 use Database\Faker\ItemFaker;
 use Faker\Generator as Faker;
 
-$factory->define(App\Item::class, function (Faker $faker) {
+$factory->define(Backend\Item::class, function (Faker $faker) {
     return [
         'reference' => $faker->ean13,
         'name' => ItemFaker::part(),
@@ -14,9 +14,9 @@ $factory->define(App\Item::class, function (Faker $faker) {
     ];
 });
 
-$factory->state(App\Item::class, 'labor', function (Faker $faker) {
+$factory->state(Backend\Item::class, 'labor', function (Faker $faker) {
     return [
-        'name' => App\Item::LABOR,
+        'name' => Backend\Item::LABOR,
         'reference' => '',
         'provider' => '',
         'is_labor' => true

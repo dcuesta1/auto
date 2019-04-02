@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Customer::class, function (Faker $faker) {
+$factory->define(Backend\Customer::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
@@ -14,6 +14,6 @@ $factory->define(App\Customer::class, function (Faker $faker) {
     ];
 });
 
-$factory->afterCreating(App\Customer::class, function ($customer) {
-    $customer->vehicles()->save(factory(App\Vehicle::class)->make());
+$factory->afterCreating(Backend\Customer::class, function ($customer) {
+    $customer->vehicles()->save(factory(Backend\Vehicle::class)->make());
 });

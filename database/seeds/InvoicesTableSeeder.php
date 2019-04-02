@@ -1,6 +1,6 @@
 <?php
 
-use App\{Customer, Invoice, Car, Payment, Item};
+use Backend\{Customer, Invoice, Car, Payment, Item};
 use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use Database\Faker\{CarFaker, ItemFaker};
@@ -22,9 +22,9 @@ class InvoicesTableSeeder extends Seeder
     public function run()
     {
 
-        $company = App\Company::find(1);
+        $company = Backend\Company::find(1);
 
-        factory(App\Invoice::class, 2)->create()->each(function (Invoice $invoice) use ($company) {    
+        factory(Backend\Invoice::class, 2)->create()->each(function (Invoice $invoice) use ($company) {    
             $net = $invoice->cost;
             $fees = $net*.03;
             $tip = $this->faker->randomNumber(4);

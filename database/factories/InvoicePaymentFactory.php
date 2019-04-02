@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\InvoicePayment::class, function (Faker $faker) {
+$factory->define(Backend\InvoicePayment::class, function (Faker $faker) {
     $taxRate = 6.50;
 
     $net = $faker->numberBetween($min = 200, $max = 450);
@@ -15,7 +15,7 @@ $factory->define(App\InvoicePayment::class, function (Faker $faker) {
         'merchant_fees' => 0.00,
         'taxes' => $taxes,
         'card' => null,
-        'type' => App\InvoicePayment::CASH,
+        'type' => Backend\InvoicePayment::CASH,
         'reference' => null,
         'is_request' => false
     ];

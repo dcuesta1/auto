@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(Backend\User::class, function (Faker $faker) {
     static $password;
 
     return [
@@ -11,46 +11,46 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->phoneNumber,
         'password' => $password ?: $password = tokenAuth()->encrypt('password'),
-        'type' => App\User::EMPLOYEE,
+        'type' => Backend\User::EMPLOYEE,
         'company_id' => 0
     ];
 });
 
-$factory->state(App\User::class, 'developer', [
+$factory->state(Backend\User::class, 'developer', [
     'name' => 'Daniel Cuesta',
     'username' => 'dcuesta',
     'email' => 'cuestadaniel31@gmail.com',
     'password' => tokenAuth()->encrypt('password'),
-    'type' => App\User::DEVELOPER,
+    'type' => Backend\User::DEVELOPER,
 ]);
 
-$factory->state(App\User::class, 'owner', [
+$factory->state(Backend\User::class, 'owner', [
     'name' => 'Gary Beatty',
     'username' => 'gbeatty',
     'email' => 'gary@beattysautorepair.com',
     'password' => tokenAuth()->encrypt('password'),
-    'type' => App\User::OWNER,
+    'type' => Backend\User::OWNER,
     'company_id' => function() {
-        return factory(App\Company::class)->create([
+        return factory(Backend\Company::class)->create([
             'email' => 'gary@beattysautorepair.com'
         ])->id;
     }
 ]);
 
-$factory->state(App\User::class, 'employee', [
+$factory->state(Backend\User::class, 'employee', [
     'company_id' => 1
 ]);
 
-$factory->afterCreatingState(App\User::class, 'owner', function ($user) {
+$factory->afterCreatingState(Backend\User::class, 'owner', function ($user) {
     $roles = $user->company->employeeRoles;
 
     foreach( $roles as $role ) {
-        if($role->name == App\Role::OWNER) {
+        if($role->name == Backend\Role::OWNER) {
             $user->role()->save($role);
         }
     }
 });
 
-// $factory->afterCreatingState(App\User::class, 'employee', function ($user, $faker) {
+// $factory->afterCreatingState(Backend\User::class, 'employee', function ($user, $faker) {
    
 // });
