@@ -29,6 +29,10 @@
 
 // Coupon and Review Section
 #coupon-review-section {
+  .row {
+    margin-right: 0px;
+    //TODO:  Temporary fix
+  }
   position: relative;
   margin-bottom: 20px;
   min-height: 370px;
@@ -68,7 +72,6 @@
       text-transform: uppercase;
       h2 {
         margin: 0;
-        margin-left: -35px;
         color: #dfe9ff;
         font: 700 2.8em/1.4em 'Glacial',Verdana,sans-serif;
         text-transform: uppercase;
@@ -111,5 +114,8 @@
         background-color: #0d7abd;
       }
     }
+  }
+  .wow {
+    padding: 0;
   }
 }

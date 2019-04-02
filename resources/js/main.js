@@ -65,7 +65,7 @@
 
         if ($('body').hasClass('mobile-nav-active')) {
           $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('fa fa-bars');
+          $('.mobile-nav-toggle i').toggleClass('fa-times fa-bars');
           $('.mobile-nav-overly').fadeOut();
         }
         return false;
@@ -101,20 +101,10 @@
     items: 1
   });
 
-  $(".intro-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    nav: true,
-    navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-    items: 1,
-    slideSpeed : 3500,
-  });
-
   // Services at homepage links
   $(".services-item").on('click', function(e) {
     window.location.href = e.currentTarget.dataset.anchor;
   });
 
-})($);
+})(jQuery);
 

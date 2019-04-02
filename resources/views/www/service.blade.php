@@ -7,17 +7,18 @@
 @section('content')
 <section id="services-page">
   <div class="container clearfix">
-    
-    <header class="section-header">
-      <h2>{{ $title }}</h2>
-    </header>
+    <div class="row">
+      <header class="section-header">
+        <h2>{{ $title }}</h2>
+      </header>
 
-    @foreach ($sections as $section)
-    <div class="row about-container">
-      <h3>{{ $section['title'] }}</h3>
-      <p>{{ $section['desc'] }}<p>
+      @foreach ($sections as $section)
+      <div class="row about-container">
+        <h3>{{ $section['title'] }}</h3>
+        <p>{{ $section['desc'] }}</p>
+      </div>
+      @endforeach
     </div>
-    @endforeach
   </div>
 </section>
 @endsection

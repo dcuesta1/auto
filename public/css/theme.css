@@ -7135,7 +7135,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Glacial", Arial, sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
@@ -7273,7 +7273,6 @@ h6 {
   padding-bottom: 10px;
   background: #00366f;
   color: #fff;
-  font-weight: bold;
   display: block;
   width: 100%;
 }
@@ -7337,7 +7336,7 @@ h6 {
   margin: 0 0 20px 0;
   padding: 2px 0 2px 0;
   line-height: 1;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Glacial", Arial, sans-serif;
   color: #fff;
   font-weight: 400;
   letter-spacing: 3px;
@@ -7348,7 +7347,7 @@ h6 {
   font-size: 13px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Glacial", Arial, sans-serif;
   color: #ecf5ff;
 }
 
@@ -7381,30 +7380,8 @@ h6 {
   padding-bottom: 20px;
 }
 
-#footer .footer-top .footer-links {
-  margin-bottom: 30px;
-}
-
-#footer .footer-top .footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#footer .footer-top .footer-links ul li {
-  padding: 8px 0;
-}
-
-#footer .footer-top .footer-links ul li:first-child {
-  padding-top: 0;
-}
-
-#footer .footer-top .footer-links ul a {
-  color: #ecf5ff;
-}
-
-#footer .footer-top .footer-links ul a:hover {
-  color: #74b5fc;
+#footer .footer-top .footer-schedule span {
+  display: block;
 }
 
 #footer .footer-top .footer-contact {
@@ -7477,8 +7454,8 @@ h6 {
   color: #004289;
   padding: 10px 15px;
   transition: 0.3s;
-  font-size: 14px;
-  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-family: "Glacial", Arial, sans-serif;
   font-weight: 500;
 }
 
@@ -7574,7 +7551,7 @@ h6 {
 
 .mobile-nav {
   position: fixed;
-  top: 0;
+  top: 0px;
   bottom: 0;
   z-index: 9999;
   overflow-y: auto;
@@ -7638,7 +7615,7 @@ h6 {
 .mobile-nav-toggle {
   position: fixed;
   right: 0;
-  top: 0;
+  top: 50px;
   z-index: 9998;
   border: 0;
   background: none;
@@ -7712,6 +7689,10 @@ h6 {
   min-height: 370px;
 }
 
+#coupon-review-section .row {
+  margin-right: 0px;
+}
+
 #coupon-review-section .couponList .coupon {
   position: relative;
   margin: 30px 50px 40px;
@@ -7749,7 +7730,6 @@ h6 {
 
 #coupon-review-section #testimonials .section-header h2 {
   margin: 0;
-  margin-left: -35px;
   color: #dfe9ff;
   font: 700 2.8em/1.4em "Glacial", Verdana, sans-serif;
   text-transform: uppercase;
@@ -7798,11 +7778,14 @@ h6 {
   background-color: #0d7abd;
 }
 
+#coupon-review-section .wow {
+  padding: 0;
+}
+
 /* About Us Section
 --------------------------------*/
 
 #about {
-  background: url(https://www.universitytirecenter.com/Themes/Automotive/Assets/images/tires.png) no-repeat top right/50%;
   padding: 60px 0;
   position: relative;
 }
@@ -7972,7 +7955,7 @@ h6 {
 }
 
 #why-us .counters span {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Glacial", Arial, sans-serif;
   font-weight: bold;
   font-size: 48px;
   display: block;
@@ -7982,7 +7965,7 @@ h6 {
 #why-us .counters p {
   padding: 0;
   margin: 0 0 20px 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Glacial", Arial, sans-serif;
   font-size: 14px;
   color: #cce5ff;
 }
@@ -8060,7 +8043,7 @@ h6 {
   margin: 0 0 10px 0;
   padding: 0;
   line-height: 1;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Glacial", Arial, sans-serif;
   font-weight: 300;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -8070,7 +8053,7 @@ h6 {
 #contact .contact-about p {
   font-size: 14px;
   line-height: 24px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Glacial", Arial, sans-serif;
   color: #888;
 }
 
@@ -8210,6 +8193,11 @@ h6 {
   cursor: pointer;
 }
 
+span.strong {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .shop-icon-brakes {
   background-position: 257px -57px !important;
 }
@@ -8246,6 +8234,21 @@ h6 {
   }
 }
 
+@media (max-width: 1199.98px) {
+  #coupon-review-section .row {
+    margin-right: -15px;
+  }
+
+  #coupon-review-section .couponList .coupon {
+    margin: 0;
+    padding: 50px 0;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: auto;
+    text-align: center;
+  }
+}
+
 @media (max-width: 991px) {
   #header {
     height: 60px;
@@ -8261,23 +8264,6 @@ h6 {
     padding: 100px 0 30px 0;
   }
 
-  #intro {
-    padding-top: 60px;
-  }
-
-  #intro .intro-img {
-    width: 80%;
-    float: none;
-    margin: 0 auto 25px auto;
-  }
-
-  #intro .intro-info {
-    width: 80%;
-    float: none;
-    margin: auto;
-    text-align: center;
-  }
-
   #why-us .card {
     margin: 0;
   }
@@ -8288,14 +8274,30 @@ h6 {
     margin-top: -113px;
   }
 
+  #about {
+    background: url(https://www.universitytirecenter.com/Themes/Automotive/Assets/images/tires.png) no-repeat top right/50%;
+  }
+
   #about .section-header {
     margin-top: 100px;
+  }
+
+  #testimonials .section-header {
+    margin-left: -35px;
   }
 }
 
 @media (max-width: 991.98px) {
+  #about {
+    background-position-y: 107px;
+  }
+
   .back-to-top {
     bottom: 15px;
+  }
+
+  #intro {
+    padding: 110px 0 1px 0;
   }
 
   #intro .intro-info {
@@ -8307,8 +8309,40 @@ h6 {
     margin-bottom: 30px;
   }
 
+  #intro .intro-info h2 strong {
+    font-size: 34px;
+  }
+
   .section-header p {
     width: 100%;
+  }
+
+  #about .section-header h3 {
+    font-size: 2em;
+  }
+
+  #about .section-header h3 span {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  #coupon-review-section #testimonials .section-header h2 {
+    font-size: 1.5em;
+  }
+
+  #coupon-review-section .couponList .coupon .title strong {
+    font-size: 44px;
+  }
+
+  #intro .intro-info p {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 576px) {
+  .mobile-nav-toggle {
+    top: 0;
   }
 }
 
@@ -8326,7 +8360,7 @@ h6 {
   }
 
   #intro {
-    padding: 60px 0 20px 0;
+    padding: 125px 0 20px 0;
   }
 
   #intro.owl-carousel .owl-nav {
@@ -8351,6 +8385,10 @@ h6 {
   }
 
   #testimonials .section-header h2 {
+    font-size: 22px;
+  }
+
+  #footer .footer-top .footer-info h3 {
     font-size: 22px;
   }
 }

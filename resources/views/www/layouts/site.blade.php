@@ -18,23 +18,19 @@
   <link href="{{ URL::asset('img/favicon.ico') }}" rel="icon">
   <link href="{{ URL::asset('img/logo180^2.png') }}" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
-
   <!-- Stylesheet File -->
   <link href="{{ URL::asset('css/theme.css') }}" rel="stylesheet">
 </head>
 
 <body>
   <header id="header" class="fixed-top">
-    <a href="tel:+13212891668" class="tap-to-call d-sm-none d-md-none d-lg-none d-xl-none">
+    <a href="tel:+13212891668" class="tap-to-call d-sm-none d-md-none d-lg-none d-xl-none clearfix">
       Tap here to call us: (321) 289-1668
     </a>
     <div class="container">
 
       <div class="logo float-left">
-        {{-- <h1 class="text-light"><a href="#header"><span>Beatty</span></a></h1> --}}
-        <a href="#intro" class="scrollto"><img src="{{ URL::asset('img/logo.png') }}" alt="Beatty's" class="img-fluid"></a>
+        <a href="{{ URL::to('./') }}" class="scrollto"><img src="{{ URL::asset('img/logo.png') }}" alt="Beatty's" class="img-fluid"></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
@@ -50,11 +46,8 @@
               <li><a href="/services/climate_control_systems">Climate Control Systems</a></li>
               <li><a href="/services/cooling_system_repair">Cooling System Repair</a></li>
               <li><a href="/services/diesel_engine_repair">Diesel Engine Repair</a></li>
-              <li><a href="/services/differential_repair">Differential Repair</a></li>
               <li><a href="/services/electrical_and_electronic_systems">Electrical &amp; Electronic Systems</a></li>
               <li><a href="/services/engine_diagnostics_and_performance">Engine Diagnostics &amp; Performance</a></li>
-              <li><a href="/services/exhaust_system_repair">Exhaust System Repair</a></li>
-              <li><a href="/services/four_wheel_drive_system">Four Wheel Drive System</a></li>
               <li><a href="/services/preventive_maintenance">Preventive Maintenance</a></li>
               <li><a href="/services/starting_charging_and_batteries">Starting, Charging &amp; Batteries</a></li>
               <li><a href="/services/steering_and_suspension_system">Steering & Suspension System</a></li>
@@ -90,12 +83,12 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 footer-info">
-            <h3>NewBiz</h3>
+          <div class="col-lg-4 footer-info">
+            <h3>Beatty's Auto Repair</h3>
             <p>From bumper to bumper, we have you covered. We utilize the very latest in automotive repair technology for a fast turnaround time, ensuring you spend less time in the shop, and more time on the road.</p>
           </div>
 
-          <div class="col-lg-4 col-md-6 footer-contact">
+          <div class="col-lg-4 col-sm-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
               631b Childre Ave <br>
@@ -110,6 +103,17 @@
               <a target="_blank" href="https://www.yelp.com/biz/beattys-auto-repair-titusville" class="yelp"><i class="fa fa-yelp"></i></a>
             </div>
 
+          </div>
+
+          <div class="col-lg-4 col-sm-6 footer-schedule">
+            <h4>Business Hours</h4>
+            <span>Mon 8AM - 5PM</span>
+            <span>Tue 8AM - 5PM</span>
+            <span>Wed 8AM - 5PM</span>
+            <span>Thu 8AM - 5PM</span>
+            <span>Fri 8AM - 5PM</span>
+            <span>Sat Closed</span>
+            <span>Sun Closed</span>
           </div>
 
         </div>

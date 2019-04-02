@@ -1,9 +1,9 @@
 const mix = require('laravel-mix');
 
 mix.scripts([
-      'resources/js/contactform.js',
-      'resources/lib/mobile-nav/mobile-nav.js',
-      'resources/js/main.js'
+      'resources/js/main.js',
+      'resources/js/mobile-nav.js',
+      'resources/js/contactform.js'
    ], 'public/js/cuesta-light19.es6.js')
    .babel('public/js/cuesta-light19.es6.js', 'public/js/cuesta-light19.js')
    .scripts([

@@ -2,7 +2,7 @@
 
 .mobile-nav {
     position: fixed;
-    top: 0;
+    top: 0px;
     bottom: 0;
     z-index: 9999;
     overflow-y: auto;
@@ -58,7 +58,7 @@
   .mobile-nav-toggle {
     position: fixed;
     right: 0;
-    top: 0;
+    top: 50px;
     z-index: 9998;
     border: 0;
     background: none;

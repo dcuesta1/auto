@@ -3,7 +3,7 @@
 --------------------------------------------------------------*/
 
 @media (max-width: 1619px) and (min-width: 1224px) {
-.template-home .module-couponslist .coupon {
+  .template-home .module-couponslist .coupon {
     padding: 30px 0 20px 50px;
     margin-left: 25px;
     margin-right: 25px;
@@ -14,11 +14,28 @@
 }
 
 @media (min-width: 992px) {
-    #intro.owl-carousel .owl-nav {
-      padding: 40px;
+  #intro.owl-carousel .owl-nav {
+    padding: 40px;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  #coupon-review-section {
+    .row {
+      margin-right: -15px;
+    }
+    .couponList {
+      .coupon {
+        margin: 0;
+        padding: 50px 0;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: auto;
+        text-align: center;
+      }
     }
   }
-  
+}  
 @media (max-width: 991px) {
   #header {
     height: 60px;
@@ -30,20 +47,6 @@
   }
   #services-page {
     padding: 100px 0 30px 0;
-  }
-  #intro {
-    padding-top: 60px;
-    .intro-img {
-      width: 80%;
-      float: none;
-      margin: 0 auto 25px auto;
-    }
-    .intro-info {
-      width: 80%;
-      float: none;
-      margin: auto;
-      text-align: center;
-    }
   }
   #why-us .card {
     margin: 0;
@@ -58,28 +61,82 @@
   }
 
   #about {
+    background: url(https://www.universitytirecenter.com/Themes/Automotive/Assets/images/tires.png) no-repeat top right/50%;
     .section-header {
       margin-top: 100px;
     }
   }
+  #testimonials .section-header {
+    margin-left: -35px;
+  }
 }
 
 @include media-breakpoint-down(md) {
+  #about {
+    background-position-y: 107px;
+  }
   .back-to-top {
     bottom: 15px;
   }
-  #intro .intro-info {
-    width: 100%;
-    h2 {
-      font-size: 34px;
-      margin-bottom: 30px;
+  #intro {
+    padding: 110px 0 1px 0;
+    .intro-info {
+      width: 100%;
+      h2 {
+        font-size: 34px;
+        margin-bottom: 30px;
+        strong {
+          font-size: 34px;
+        }
+      }
     }
   }
   .section-header p {
     width: 100%;
   }
+
+  #about .section-header h3 {
+    font-size: 2em;
+    span {
+      font-size: 60px;
+    }
+  }
+}
+
+@media (max-width:576px) {
+  #coupon-review-section {
+    #testimonials {
+      .section-header {
+        h2 {
+          font-size: 1.5em;
+        }
+      }
+    }
+    .couponList {
+      .coupon {
+        .title {
+          strong {
+            font-size: 44px;
+          }
+        }
+      }
+    }
   }
 
+  #intro {
+    .intro-info {
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@media (min-width:576px) {
+  .mobile-nav-toggle {
+    top: 0;
+  }
+}
   
   @include media-breakpoint-only(xs) { 
     #header, #header.header-scrolled {
@@ -94,7 +151,7 @@
     }
 
     #intro {
-      padding: 60px 0 20px 0;
+      padding: 125px 0 20px 0;
       &.owl-carousel .owl-nav {
         padding: 0 10px;
       }
@@ -119,6 +176,16 @@
       .section-header {
         h2 {
           font-size: 22px;
+        }
+      }
+    }
+
+    #footer {
+      .footer-top {
+        .footer-info {
+          h3 {
+            font-size: 22px;
+          }
         }
       }
     }

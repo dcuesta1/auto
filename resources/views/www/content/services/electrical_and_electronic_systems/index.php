@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Electrical & Electornic Systems',
+    'title' => 'Electrical & Electronic Systems',
     'sections' => [
         0 => [
             'title' => 'Description',
