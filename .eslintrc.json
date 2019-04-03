@@ -17,6 +17,7 @@
     "jsx": false
   },
 
+
   "env": {
     "browser": false,
     "node": false,
