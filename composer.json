@@ -34,14 +34,14 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "Backend\\": "backend/"
         },
         "classmap": [
             "database/seeds",
             "database/factories",
             "database/faker"
         ],
-        "files": ["app/Helpers/helpers.php"]
+        "files": ["backend/Helpers/helpers.php"]
     },
     "autoload-dev": {
         "psr-4": {
