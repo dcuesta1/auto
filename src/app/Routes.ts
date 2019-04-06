@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AuthLoginComponent } from './auth/login/auth.login.component'
+import { AuthLoginComponent } from './auth/login/auth.login.component';
 
 export const RoutesMap: Routes = [
     {
