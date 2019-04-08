@@ -1,6 +1,6 @@
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -47,6 +47,7 @@ import { CompanyCustomersComponent } from './customers/company-customers/company
     NgxDatatableModule
   ],
   providers: [AuthInterceptorProvider],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { environment } from '../../environments/environment';
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {User} from '../_models/User';
 
 @Injectable({
@@ -7,6 +7,9 @@ import {User} from '../_models/User';
 })
 export class AppService {
   public loggedIn: boolean;
+  private _isLoading = true;
+
+  @Output() loader: EventEmitter<boolean> = new EventEmitter();
 
   public getLocationPath() {
     return window.location.pathname.substr(1).split('/');
@@ -55,5 +58,14 @@ export class AppService {
 
   public clear(): void {
     localStorage.clear();
+  }
+
+  get isloading() {
+    return this._isLoading;
+  }
+
+  toggleLoading(val: boolean) {
+    this._isLoading = val;
+    this.loader.emit(this._isLoading);
   }
 }

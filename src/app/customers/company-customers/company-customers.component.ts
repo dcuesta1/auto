@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {DatatableComponent} from '@swimlane/ngx-datatable';
 import {Customer} from '../../_models/Customer';
+import {AppService} from '../../_services/app.service';
 import {CustomerService} from '../../_services/customer.service';
 
 @Component({
@@ -17,16 +18,22 @@ export class CompanyCustomersComponent implements OnInit {
     { name: 'Last visit'}
   ];
 
-  limit = 10;
-  temp = [];
-  selected = [];
+  public isLoading: boolean;
+  public limit = 10;
+  public temp = [];
+  public selected = [];
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
   public rows: Customer[];
   private _cache: Customer[];
 
-  constructor(private _customerService: CustomerService) {
+  constructor(private _customerService: CustomerService, private _appService: AppService) {
+
+    // this._appService.loader.subscribe(isLoading => {
+    //   this.isLoading = isLoading;
+    // });
+
     _customerService.companyCustomers()
       .subscribe(
         (customers) => {
@@ -38,6 +45,7 @@ export class CompanyCustomersComponent implements OnInit {
 
           this.rows = customerArr;
           this.temp = [...customerArr];
+          this._appService.toggleLoading(false);
         }
       );
   }
