@@ -1,0 +1,159 @@
+<div class="content-header">
+  <h1 class="content-header-title">
+    Customers
+  </h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/">Autoshop</a>
+      </li>
+      <li class="breadcrumb-item active">Customers</li>
+    </ol>
+  </nav>
+</div>
+<div class="row">
+  <div class="col-12 dataTables-wrapper">
+
+    <div class="card">
+
+      <div class="card-header">
+        <h5 class="card-title">Customers</h5>
+        <h6 class="card-subtitle text-muted">Click on a customer to view details, or select multiple to delete.</h6>
+      </div>
+
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="dataTables_length" id="datatables-basic_length">
+              <label>
+                Show
+                <select [(ngModel)]="limit" name="datatables-basic_length" aria-controls="datatables-basic" class="custom-select custom-select-sm form-control form-control-sm">
+                  <option [value]="10" selected>10</option>
+                  <option [value]="25">25</option>
+                  <option [value]="50">50</option>
+<!--                    <option ngValue="100">100</option>-->
+                </select>
+                entries
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div id="datatables-basic_filter" class="dataTables_filter">
+              <label>Search:
+                <input (keyup)="updateFilter($event)" type="search" class="form-control form-control-sm" placeholder="search by name..">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+
+            <ngx-datatable
+              #table
+              class='material'
+              [columns]="columns"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="limit"
+              [rows]='rows'>
+              [selected]="selected"
+              [selectionType]="'checkbox'"
+              (activate)="onActivate($event)"
+              (select)='onSelect($event)'>
+
+              <ngx-datatable-column [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false">
+                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+                  <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
+                </ng-template>
+                <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                  <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Name"></ngx-datatable-column>
+              <ngx-datatable-column name="Email"></ngx-datatable-column>
+              <ngx-datatable-column name="Phone"></ngx-datatable-column>
+              <ngx-datatable-column name="last visit">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  {{value | date: 'longDate'}}
+                </ng-template>
+              </ngx-datatable-column>
+
+<!--              <ngx-datatable-footer>-->
+<!--                <ng-template-->
+<!--                  ngx-datatable-footer-template-->
+<!--                  let-rowCount="rowCount"-->
+<!--                  let-pageSize="pageSize"-->
+<!--                  let-selectedCount="selectedCount"-->
+<!--                  let-curPage="curPage"-->
+<!--                  let-offset="offset">-->
+<!--                  <div style="padding: 5px 10px">-->
+<!--                    <hr style="width:100%" />-->
+<!--                    <div>-->
+<!--                      Rows: {{rowCount}} |-->
+<!--                      Size: {{pageSize}} |-->
+<!--                      Current: {{curPage}} |-->
+<!--                      Offset: {{offset}}-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </ng-template>-->
+<!--              </ngx-datatable-footer>-->
+            </ngx-datatable>
+<!--            <table class="table table-striped">-->
+<!--              <thead>-->
+<!--              <tr>-->
+<!--                <th scope="col"><input type="checkbox" /></th>-->
+<!--                <th scope="col">Name</th>-->
+<!--                <th scope="col">Phone</th>-->
+<!--                <th scope="col">Email</th>-->
+<!--                <th scope="col">Last visit</th>-->
+<!--              </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<!--              <tr *ngFor="let customer of customers$ | async">-->
+<!--                <th scope="row"><input type="checkbox" /></th>-->
+<!--                <td>{{ customer.firstName }}</td>-->
+<!--                <td>{{ customer.phone }}</td>-->
+<!--                <td>{{ customer.email }}</td>-->
+<!--                <td>{{ customer.lastVisit | date:'longDate'}}</td>-->
+<!--              </tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+          </div>
+        </div>
+
+<!--        <div class="row">-->
+<!--          <div class="col-sm-12 col-md-5">-->
+<!--            <div class="dataTables_info"s role="status" aria-live="polite">-->
+<!--              Showing 1 to 10 of 57 entries-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-sm-12 col-md-7">-->
+<!--            <div class="dataTables_paginate paging_simple_numbers">-->
+<!--              <ul class="pagination">-->
+<!--                <li class="paginate_button page-item previous disabled" id="datatables-buttons_previous">-->
+<!--                  <a href="#" aria-controls="datatables-buttons" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>-->
+<!--                </li>-->
+<!--                <li class="paginate_button page-item active">-->
+<!--                  <a href="#" aria-controls="datatables-buttons" data-dt-idx="1" tabindex="0" class="page-link">1</a>-->
+<!--                </li>-->
+<!--                <li class="paginate_button page-item ">-->
+<!--                  <a href="#" aria-controls="datatables-buttons" data-dt-idx="2" tabindex="0" class="page-link">2</a>-->
+<!--                </li>-->
+<!--                <li class="paginate_button page-item ">-->
+<!--                  <a href="#" aria-controls="datatables-buttons" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>-->
+<!--                <li class="paginate_button page-item next" id="datatables-buttons_next">-->
+<!--                  <a href="#" aria-controls="datatables-buttons" data-dt-idx="7" tabindex="0" class="page-link">Next</a>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+
+    </div>
+  </div>
+</div>

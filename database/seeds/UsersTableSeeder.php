@@ -1,6 +1,6 @@
 <?php
 
-use Backend\{ AuthToken, User};
+use App\{ AuthToken, User};
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
 			->each(function ($user) {
 				$user
 					->authTokens()
-					->save(factory(Backend\AuthToken::class)->make());
+					->save(factory(App\AuthToken::class)->make());
 			});
 	}
 }

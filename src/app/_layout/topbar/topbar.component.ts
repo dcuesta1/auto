@@ -1,18 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
+import {AppService} from '../../_services/app.service';
+import {User} from '../../_models/User';
 import {AuthService} from '../../_services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.css']
+  styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;                  // {1}
+  public currentUser: User;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private appService: AppService,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn; // {2}
+    this.currentUser = new User(this.appService.getCurrentUser());
+  }
+
+  signOut() {
+    this.authService.destroy()
+      .subscribe(
+        (data) => {
+          this.appService.deleteAuthToken();
+          this.appService.removeCurrentUser();
+          this.router.navigate(['/login']);
+        }
+      );
   }
 }

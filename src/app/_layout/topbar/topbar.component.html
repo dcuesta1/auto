@@ -1,4 +1,4 @@
-<div class="app-topbar navbar navbar-expand navbar-dark" *ngIf="isLoggedIn$ | async">
+<div class="app-topbar navbar navbar-expand navbar-dark">
   <a href="#" class="sidebar-toggle d-flex mr-2">
     <i class="hamburger align-self-center"></i>
   </a>
@@ -56,7 +56,7 @@
             </a>
             <a ngbDropdownItem href="#" class="list-group-item">Settings</a>
             <div class="dropdown-divider"></div>
-            <a ngbDropdownItem href="#" class="list-group-item">Sign out</a>
+            <button ngbDropdownItem (click)="signOut()" class="btn btn-link list-group-item">Sign out</button>
           </div>
         </div>
       </li>

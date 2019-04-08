@@ -23,9 +23,10 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/animate.css/animate.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/styles.scss"
+              "src/assets/sass/_vendor.scss",
+              "src/assets/sass/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true

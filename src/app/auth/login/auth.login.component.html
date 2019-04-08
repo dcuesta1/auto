@@ -1,3 +1,50 @@
-<p>
-  auth.login works!
-</p>
+<div class="app-login align-self-center animated bounceInDown">
+  <div id="formContent">
+    <div id="loginForm" *ngIf="loginPage">
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <i class="fa fa-car"></i>
+        <h2>Autoshop</h2>
+      </div>
+
+      <!-- Login Form -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input
+          formControlName="email"
+          type="text"
+          placeholder="Email"
+          [ngClass]="{ 'animated shake': f.email.touched && f.email.errors }"
+        >
+        <input
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+          [ngClass]="{ 'animated shake': f.password.touched && f.password.errors }"
+        >
+        <div class="errorMessage text-danger" [ngClass]="{'visible': error}">Wrong email or password.</div>
+        <input [disabled]="!form.valid" type="submit" value="Sign In">
+      </form>
+
+      <!-- Remind Password -->
+      <div id="formFooter">
+        <button class="btn btn-link" (click)="loginPage = !loginPage">Forgot Password?</button>
+      </div>
+    </div>
+    <div id="recoverPassword" *ngIf="!loginPage">
+      <div class="panel-body">
+        <div class="text-center">
+          <h3><i class="fa fa-lock fa-4x"></i></h3>
+          <h2 class="text-center" style="margin-top: 15px">Forgot Password?</h2>
+          <p>We'll send you a security code to confirm your email.</p>
+          <div class="panel-body">
+
+            <form class="form">
+              <input type="text" placeholder="Email Address" >
+              <input value="Send code" type="submit">
+            </form>
+
+          </div>
+      <button class="btn btn-link" (click)="loginPage = !loginPage"><< Login</button>
+    </div>
+  </div>
+</div>

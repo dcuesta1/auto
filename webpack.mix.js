@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mi");
 
 mix.scripts([
       'resources/js/main.js',
@@ -18,7 +18,7 @@ mix.scripts([
    // .copyDirectory('resources/lib/font-awesome/fonts', 'public/fonts')
    .copyDirectory('resources/img', 'public/img'); 
 
-// versionning
+// version
 if (mix.config.inProduction) {
    mix.version();
  }

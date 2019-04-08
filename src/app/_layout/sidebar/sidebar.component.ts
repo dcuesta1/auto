@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
-import {AuthService} from '../../_services/auth.service';
+import {AppService} from '../../_services/app.service';
+import {User} from '../../_models/User';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  isLoggedIn$: Observable<boolean>;                  // {1}
+  public currentUser: User;
 
-  constructor(private authService: AuthService) { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn; // {2}
+    this.currentUser = this.appService.getCurrentUser();
   }
 }

@@ -1,4 +1,4 @@
-<div class="app-sidebar sidebar" *ngIf="isLoggedIn$ | async">
+<div class="app-sidebar sidebar">
   <a href="#" class="sidebar-brand">
     <i class="fa fa-car"></i>
     Autoshop
@@ -6,30 +6,35 @@
   <div class="sidebar-content">
     <div class="sidebar-user">
       <img src="assets/images/m-avatar.svg" class="img-fluid rounded-circle mb-2" alt="user">
-      <div class="font-weight-bold">John Doe</div>
+      <div class="font-weight-bold">{{ currentUser.name}}</div>
       <small>ACME Corp.</small>
     </div>
     <ul class="sidebar-nav">
       <li class="sidebar-header">Main</li>
-      <li class="sidebar-item active">
-        <a href="#" class="sidebar-link">
+      <li class="sidebar-item">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="sidebar-link">
           <span class="align-middle">Dashboard</span>
         </a>
       </li>
       <li class="sidebar-item">
-        <a href="#" class="sidebar-link">
-          <span class="align-middle">Dashboard</span>
-          <div class="sidebar-badge badge badge-pill badge-primary">New</div>
+        <a routerLink="/invoices" routerLinkActive="active" class="sidebar-link">
+          <span class="align-middle">Invoices</span>
+<!--          <div class="sidebar-badge badge badge-pill badge-primary">New</div>-->
         </a>
       </li>
       <li class="sidebar-item">
-        <a href="#" class="sidebar-link">
-          <span class="align-middle">Dashboard</span>
+        <a routerLink="/Payments" routerLinkActive="active" class="sidebar-link">
+          <span class="align-middle">Payments</span>
         </a>
       </li>
       <li class="sidebar-item">
-        <a href="#" class="sidebar-link">
-          <span class="align-middle">Dashboard</span>
+        <a routerLink="/customers" routerLinkActive="active" class="sidebar-link">
+          <span class="align-middle">Customers</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a routerLink="/employees" routerLinkActive="active" class="sidebar-link">
+          <span class="align-middle">Employees</span>
         </a>
       </li>
     </ul>

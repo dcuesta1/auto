@@ -28,21 +28,21 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    Backend\Http\Kernel::class
+    App\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Backend\Console\Kernel::class
+    App\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    Backend\Exceptions\Handler::class
+    App\Exceptions\Handler::class
 );
 
 $app->singleton('TokenAuthentication', function ($app) {
-	return new \Backend\Helpers\TokenAuthentication();
+	return new \App\Helpers\TokenAuthentication();
 });
 
 /*

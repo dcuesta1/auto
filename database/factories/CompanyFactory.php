@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 use Faker\Generator as Faker;
 
-$factory->define(Backend\Company::class, function (Faker $faker) {
+$factory->define(App\Company::class, function (Faker $faker) {
     $subscriptionExpiration = Carbon::now()->add(30, 'day');
 
     return [
@@ -21,8 +21,8 @@ $factory->define(Backend\Company::class, function (Faker $faker) {
     ];
 });
 
-$factory->afterCreating(Backend\Company::class, function ($company) {
-    $ownerRole = new Backend\Role();
+$factory->afterCreating(App\Company::class, function ($company) {
+    $ownerRole = new App\Role();
     $ownerRole->name = 'owner';
     $ownerRole->description = 'Owner of account.';
     $ownerRole->permissions = [
@@ -35,11 +35,11 @@ $factory->afterCreating(Backend\Company::class, function ($company) {
     ];
     $company->employeeRoles()->save($ownerRole);
 
-    $customers = factory(Backend\Customer::class, 3)->make()->each(function( $customer ) use ($company) {
+    $customers = factory(App\Customer::class, 120)->make()->each(function( $customer ) use ($company) {
         $customer = $company->customers()->save($customer);
-        $car = $customer->vehicles()->save(factory(Backend\Vehicle::class)->make());
+        $car = $customer->vehicles()->save(factory(App\Vehicle::class)->make());
 
-        factory(Backend\Invoice::class)->create([
+        factory(App\Invoice::class)->create([
             'vehicle_id' => $car->id,
             'user_id' => 2,
             'customer_id' => $customer->id
