@@ -3,12 +3,12 @@
 namespace App\Helpers;
 
 use App\Exceptions\UnauthorizedAccessException;
-use App\{Token,User};
+use App\{AuthToken};
 use Auth;
 use Carbon\Carbon;
 use Hash;
 
-class TokenAuthentication 
+class TokenAuthentication
 {
     private $_refreshed = null;
 
@@ -19,19 +19,19 @@ class TokenAuthentication
 		if(!$token = AuthToken::where('value', $token)->first()) {
 			throw new UnauthorizedAccessException('INVALID TOKEN');
         }
-        
+
         $expirationDate = Carbon::parse($token->updated_at)->addDays(30);
-        
+
 		if($expirationDate <= Carbon::now()) {
 			throw new UnauthorizedAccessException('EXPIRED TOKEN');
-        } 
+        }
 
-        if($expirationDate->diffInDays(Carbon::now()) <= 7){	
+        if ($expirationDate->diffInDays(Carbon::now()) <= 7) {
             $this->_refreshed = $token->value;
             $token->value = $this->hash();
             $token->save();
-        }   
-        
+        }
+
         Auth::login($token->user);
     }
 
@@ -43,7 +43,7 @@ class TokenAuthentication
     public function encrypt($password)
     {
         return bcrypt($password);
-    } 
+    }
 
     public function refreshed()
     {

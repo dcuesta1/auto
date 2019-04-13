@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use phpDocumentor\Reflection\Types\Integer;
 
 class InvoicePayment extends Model
 {
@@ -14,32 +13,26 @@ class InvoicePayment extends Model
         'id' => 'integer',
         'invoice_id' => 'integer',
         'user_id' => 'integer',
-        'net' => 'float',
-        'fees' => 'float',
+        'amount' => 'float',
         'merchant_fees' => 'float',
         'type' => 'integer',
         'card' => 'integer',
         'is_request' => "boolean",
-        'gross' => 'float',
-        'taxes' => 'float'
     ];
 
     protected $fillable = [
-        'net', 
-        'fees', 
-        'type', 
-        'merchant_fees', 
+        'amount',
+        'type',
+        'merchant_fees',
         'card',
         'is_request',
-        'reference',
-        'gross',
-        'taxes'
+        'reference'
     ];
 
     protected $hidden = ['pivot'];
 
     const CASH = '1';
-    const CARD_SWIPPED = '2';
+    const CARD_SWIPED = '2';
     const CARD_ENTERED = '4';
 
     public function invoice()

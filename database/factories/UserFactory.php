@@ -25,9 +25,9 @@ $factory->state(App\User::class, 'developer', [
 ]);
 
 $factory->state(App\User::class, 'owner', [
-    'name' => 'Gary Beatty',
-    'username' => 'gbeatty',
-    'email' => 'gary@beattysautorepair.com',
+    'name' => 'john doe',
+    'username' => 'jdoe',
+    'email' => 'john@mail.com',
     'password' => tokenAuth()->encrypt('password'),
     'type' => App\User::OWNER,
     'company_id' => function() {
@@ -52,5 +52,5 @@ $factory->afterCreatingState(App\User::class, 'owner', function ($user) {
 });
 
 // $factory->afterCreatingState(App\User::class, 'employee', function ($user, $faker) {
-   
+
 // });

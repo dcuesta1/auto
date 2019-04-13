@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\{authToken, Invoice};
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
@@ -18,6 +17,8 @@ class User extends BaseAuthenticatable
     protected $hidden = ['password', 'pivot'];
     protected $casts = [
         'id' => 'integer',
+        'is_developer' => 'boolean',
+        'company_id' => 'integer'
     ];
 
     public function isDeveloper()
@@ -32,7 +33,7 @@ class User extends BaseAuthenticatable
 
     public function isEmployee()
     {
-        return ($this->type == seld::EMPLOYEE);
+        return ($this->type == self::EMPLOYEE);
     }
 
 	// RELATIONSHIPS
@@ -44,7 +45,7 @@ class User extends BaseAuthenticatable
 
 	public function invoices()
     {
-        return 
+        return
             $this->hasMany('App\Invoice')
                 ->orderByDesc('created_at');
     }
@@ -60,7 +61,7 @@ class User extends BaseAuthenticatable
     }
 
     // MUTATORS
-    
+
     public function getNameAttribute($value)
     {
         return ucfirst($value);

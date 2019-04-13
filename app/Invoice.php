@@ -11,22 +11,8 @@ class Invoice extends Model
 
     const PENDING_PAYMENT = 1;
     const ESTIMATE = 2;
-    const CLOSED = 4;
+    const PAID = 4;
     const CANCELLED = 8;
-
-    protected $fillable = [
-        'vehicle_id',
-        'discount',
-        'total',
-        'subtotal',
-        'status'
-    ];
-
-    protected $guarded = [
-        'status', 
-        'user_id', 
-        'number',
-    ];
 
     protected $hidden = ['pivot'];
 
@@ -34,7 +20,9 @@ class Invoice extends Model
         'id' => 'integer',
         'user_id' => 'integer',
         'vehicle_id' => 'integer',
-        'status' => 'integer'
+        'status' => 'integer',
+        'subtotal' => 'float',
+        'total' => 'float'
     ];
 
     // RELATIONSHIPS
@@ -42,11 +30,6 @@ class Invoice extends Model
     public function employee()
     {
         return $this->belongsTo('App\User');
-    }
-
-    public function payments()
-    {
-        return $this->hasMany('App\Payment');
     }
 
     public function customer()
@@ -59,9 +42,9 @@ class Invoice extends Model
         return $this->belongsTo('App\Vehicle');
     }
 
-    public function company()
+    public function fees()
     {
-        return $this->belongsTo('App\Company');
+        return $this->belongsToMany('App\Fee');
     }
 
     public function items()

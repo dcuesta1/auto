@@ -1,22 +1,18 @@
 <?php
 
-use Faker\Generator as Faker;
-
-$factory->define(App\InvoicePayment::class, function (Faker $faker) {
-    $taxRate = 6.50;
-
-    $net = $faker->numberBetween($min = 200, $max = 450);
-    $taxes = ($taxRate/100)*$net;
-
+$factory->define(App\InvoicePayment::class, function () {
     return [
-        'net' => $net,
-        'gross' => $net + $taxes,
-        'fees' => 0.00,
-        'merchant_fees' => 0.00,
-        'taxes' => $taxes,
+        'amount' => 0.00,
         'card' => null,
         'type' => App\InvoicePayment::CASH,
         'reference' => null,
         'is_request' => false
+    ];
+});
+
+$factory->state(App\InvoicePayment::class, 'card', function () {
+    return [
+        'card' => 2525,
+        'type' => App\InvoicePayment::CARD_SWIPED,
     ];
 });

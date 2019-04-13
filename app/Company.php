@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Carbon\Carbon;
-
 class Company extends BaseModel
 {
     protected $fillable = [
@@ -14,8 +12,6 @@ class Company extends BaseModel
         'ein',
         'subscription_type',
         'subscription_expiration',
-        'invoice_fee_rate',
-        'invoice_tax_rate',
         'invoice_notes',
         'invoice_thankyou_message',
         'sq_merchant_id',
@@ -25,8 +21,8 @@ class Company extends BaseModel
 
     protected $casts = [
         'subscription_type' => 'integer',
-        'invoice_fee_rate' => 'float',
-        'invoice_tax_rate' => 'float'
+        'id' => 'integer',
+        'user_id' => 'integer'
     ];
 
     // Relationships
@@ -52,6 +48,30 @@ class Company extends BaseModel
     public function customers()
     {
         return $this->hasMany('App\Customer');
+    }
+
+    public function invoices()
+    {
+        return $this->hasManyThrough('App\Invoice', 'App\User');
+    }
+
+    public function fees()
+    {
+        return $this->hasMany('App\Fee');
+    }
+
+    public function estimates()
+    {
+        return $this->hasManyThrough('App\Invoice', 'App\User')
+            ->with('vehicle', 'employee', 'customer', 'items', 'fees')
+            ->where('status', '=', Invoice::ESTIMATE);
+    }
+
+    public function completeInvoices()
+    {
+        return $this->hasManyThrough('App\Invoice', 'App\User')
+            ->with('vehicle', 'employee', 'customer', 'items', 'fees', 'invoicePayments')
+            ->where('status', '!=', Invoice::ESTIMATE);
     }
 
     // public function employees()

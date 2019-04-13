@@ -1,5 +1,6 @@
 <?php
 
+use App\Fee;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
 
@@ -14,8 +15,6 @@ $factory->define(App\Company::class, function (Faker $faker) {
         'ein' => $faker->randomNumber(7),
         'subscription_type' => 1,
         'subscription_expiration' => $subscriptionExpiration->toDateTimeString(),
-        'invoice_fee_rate' => 2.00,
-        'invoice_tax_rate' => 6.50,
         'invoice_notes' => "Please pay within 7 days.",
         'invoice_thankyou_message' => "Thank you for your business!",
     ];
@@ -35,14 +34,38 @@ $factory->afterCreating(App\Company::class, function ($company) {
     ];
     $company->employeeRoles()->save($ownerRole);
 
-    $customers = factory(App\Customer::class, 120)->make()->each(function( $customer ) use ($company) {
-        $customer = $company->customers()->save($customer);
-        $car = $customer->vehicles()->save(factory(App\Vehicle::class)->make());
+    $company->fees()->save(factory(Fee::class)->make());
+    $company->fees()->save(factory(Fee::class)->states('tax')->make());
 
-        factory(App\Invoice::class)->create([
-            'vehicle_id' => $car->id,
-            'user_id' => 2,
-            'customer_id' => $customer->id
-        ]);
-    });
+    factory(App\Customer::class, 1)
+        ->make()
+        ->each(function ($customer) use ($company) {
+
+            $customer = $company->customers()->save($customer);
+            $car = $customer->vehicles()->save(factory(App\Vehicle::class)->make());
+
+            factory(App\Invoice::class)->create([
+                'vehicle_id' => $car->id,
+                'user_id' => 2,
+                'customer_id' => $customer->id
+            ]);
+
+            factory(App\Invoice::class)->states('estimate')->create([
+                'vehicle_id' => $car->id,
+                'user_id' => 2,
+                'customer_id' => $customer->id
+            ]);
+
+            factory(App\Invoice::class)->states('pending')->create([
+                'vehicle_id' => $car->id,
+                'user_id' => 2,
+                'customer_id' => $customer->id
+            ]);
+
+            factory(App\Invoice::class)->states('paid')->create([
+                'vehicle_id' => $car->id,
+                'user_id' => 2,
+                'customer_id' => $customer->id
+            ]);
+        });
 });

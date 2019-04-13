@@ -22,8 +22,6 @@ class CreateCompaniesTable extends Migration
             $table->string('ein')->nullable();
             $table->integer('subscription_type')->default(0);
             $table->timestamp('subscription_expiration')->nullable()->default(null);
-            $table->float('invoice_fee_rate')->default(0.00);
-            $table->float('invoice_tax_rate')->default(6.50);
             $table->string('invoice_notes', 500)->default('Please pay within 10 days.');
             $table->string('invoice_thankyou_message')->default('Thank you for your business!');
             $table->string('sq_merchant_id')->nullable();
