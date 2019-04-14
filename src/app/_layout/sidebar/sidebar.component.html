@@ -13,28 +13,43 @@
       <li class="sidebar-header">Main</li>
       <li class="sidebar-item">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="sidebar-link">
-          <span class="align-middle">Dashboard</span>
+          <span class="align-middle">
+            <i class="fa fa-home"></i>
+            Dashboard
+          </span>
         </a>
       </li>
       <li class="sidebar-item">
         <a routerLink="/invoices" routerLinkActive="active" class="sidebar-link">
-          <span class="align-middle">Invoices</span>
+          <span class="align-middle">
+            <i class="fa fa-files-o"></i>
+            Invoices
+          </span>
 <!--          <div class="sidebar-badge badge badge-pill badge-primary">New</div>-->
         </a>
       </li>
       <li class="sidebar-item">
-        <a routerLink="/Payments" routerLinkActive="active" class="sidebar-link">
-          <span class="align-middle">Payments</span>
+        <a class="sidebar-link" routerLink="/payments" routerLinkActive="active">
+          <span class="align-middle">
+            <i class="fa fa-credit-card-alt"></i>
+            Payments
+          </span>
         </a>
       </li>
       <li class="sidebar-item">
         <a routerLink="/customers" routerLinkActive="active" class="sidebar-link">
-          <span class="align-middle">Customers</span>
+          <span class="align-middle">
+            <i class="fa fa-address-book"></i>
+            Customers
+          </span>
         </a>
       </li>
       <li class="sidebar-item">
         <a routerLink="/employees" routerLinkActive="active" class="sidebar-link">
-          <span class="align-middle">Employees</span>
+          <span class="align-middle">
+            <i class="fa  fa-users"></i>
+            Employees
+          </span>
         </a>
       </li>
     </ul>

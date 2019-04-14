@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {DatatableComponent} from '@swimlane/ngx-datatable';
 import {Customer} from '../../_models/Customer';
 import {AppService} from '../../_services/app.service';
@@ -18,7 +18,7 @@ export class CompanyCustomersComponent implements OnInit {
     { name: 'Last visit'}
   ];
 
-  public isLoading: boolean;
+  public isLoading = true;
   public limit = 10;
   public temp = [];
   public selected = [];
@@ -26,13 +26,8 @@ export class CompanyCustomersComponent implements OnInit {
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
   public rows: Customer[];
-  private _cache: Customer[];
 
   constructor(private _customerService: CustomerService, private _appService: AppService) {
-
-    // this._appService.loader.subscribe(isLoading => {
-    //   this.isLoading = isLoading;
-    // });
 
     _customerService.companyCustomers()
       .subscribe(
@@ -45,6 +40,7 @@ export class CompanyCustomersComponent implements OnInit {
 
           this.rows = customerArr;
           this.temp = [...customerArr];
+          this.isLoading = false;
           this._appService.toggleLoading(false);
         }
       );
@@ -52,13 +48,12 @@ export class CompanyCustomersComponent implements OnInit {
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
+
     // filter our data
-    const temp = this.temp.filter((d) => {
+    this.rows = this.temp.filter((d) => {
       return d.name.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
-    // update the rows
-    this.rows = temp;
     // Whenever the filter changes, always go back to the first page
     this.table.offset = 0;
   }

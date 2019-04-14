@@ -1,0 +1,16 @@
+.invoice-status-estimate {
+  color: blue;
+}
+
+.invoice-status-pending {
+  color: red;
+}
+
+.invoice-status-cancelled {
+  color: gray;
+}
+
+.invoice-status-closed {
+  color: green;
+}
+

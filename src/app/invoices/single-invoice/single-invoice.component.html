@@ -1,0 +1,18 @@
+<div *ngIf="!isLoading" class="content-component-wrapper">
+  <div class="content-header">
+    <h1 class="content-header-title">
+      Invoices
+    </h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/">Autoshop</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a routerLink="/invoices">Invoices</a>
+        </li>
+        <li class="breadcrumb-item active">{{ invoiceKey }}</li>
+      </ol>
+    </nav>
+  </div>
+</div>

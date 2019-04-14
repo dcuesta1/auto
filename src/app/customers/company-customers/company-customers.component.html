@@ -19,7 +19,8 @@
 
       <div class="card-header">
         <h5 class="card-title">Customers</h5>
-        <h6 class="card-subtitle text-muted">Click on a customer to view details, or select multiple to delete.</h6>
+        <small class="card-subtitle text-muted">Click on a customer to view details, or select multiple to delete.
+        </small>
       </div>
 
       <div class="card-body">
@@ -79,7 +80,7 @@
               <ngx-datatable-column name="Phone"></ngx-datatable-column>
               <ngx-datatable-column name="last visit">
                 <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                  {{value | date: 'longDate'}}
+                  {{value | date: 'mediumDate'}}
                 </ng-template>
               </ngx-datatable-column>
 
@@ -114,7 +115,7 @@
 <!--              </tr>-->
 <!--              </thead>-->
 <!--              <tbody>-->
-<!--              <tr *ngFor="let customer of customers$ | async">-->
+            <!--              <tr *ngFor="let customer of Customers$ | async">-->
 <!--                <th scope="row"><input type="checkbox" /></th>-->
 <!--                <td>{{ customer.firstName }}</td>-->
 <!--                <td>{{ customer.phone }}</td>-->

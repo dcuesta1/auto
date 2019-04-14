@@ -1,21 +1,19 @@
 import {BaseModel} from './BaseModel';
 
-export class Vehicle extends BaseModel {
+export class Item extends BaseModel {
   public id: number;
-  public make: string;
-  public model: string;
-  public year: number;
-  public vin: string;
-  private _createdAt: Date;
-  private _updatedAt: Date;
+  public name: string;
+  public price: number;
+  public reference: string;
+  public description: string;
+  public provider: string;
+  public isLabor: number;
 
   public constructor(obj: any = null, toCamel: boolean = false) {
     super(obj, toCamel);
   }
 
-  get desc() {
-    return `${this.year} ${this.model}`;
-  }
+  private _createdAt: Date;
 
   get createdAt(): Date {
     return this._createdAt;
@@ -24,6 +22,8 @@ export class Vehicle extends BaseModel {
   set createdAt(value: Date) {
     this._createdAt = new Date(value);
   }
+
+  private _updatedAt: Date;
 
   get updatedAt(): Date {
     return this._updatedAt;

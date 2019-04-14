@@ -19,7 +19,7 @@ import {AppService} from '../_services/app.service';
           </div>
           <main class="content">
             <div class="container-fluid">
-              <router-outlet ></router-outlet>
+              <router-outlet></router-outlet>
             </div>
           </main>
         </div>

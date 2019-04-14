@@ -1,0 +1,115 @@
+<div *ngIf="!isLoading" class="content-component-wrapper">
+  <div class="content-header">
+    <h1 class="content-header-title">
+      Invoices
+    </h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/">Autoshop</a>
+        </li>
+        <li class="breadcrumb-item active">Invoices</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-12 dataTables-wrapper">
+
+      <div class="card">
+
+        <div class="card-header">
+          <h5 class="card-title">Invoices</h5>
+          <small class="card-subtitle text-muted">Click on an invoice to view details, or select multiple to delete.
+          </small>
+        </div>
+
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="datatables-basic_length">
+                <label>
+                  Show
+                  <select [(ngModel)]="limit" aria-controls="datatables-basic"
+                          class="custom-select custom-select-sm form-control form-control-sm"
+                          name="datatables-basic_length">
+                    <option [value]="10" selected>10</option>
+                    <option [value]="25">25</option>
+                    <option [value]="50">50</option>
+                    <!--                    <option ngValue="100">100</option>-->
+                  </select>
+                  entries
+                </label>
+
+                <select [(ngModel)]="status">
+                  <option [value]="false">All Invoices</option>
+                  <option [value]="10">Paid</option>
+                  <option [value]="20">Outstanding</option>
+                </select>
+                <!--                <div ngbDropdown>-->
+                <!--                  <button ngbDropdownToggle>All Invoices</button>-->
+                <!--                  <div ngbDropdownMenu>-->
+                <!--                    <div ngbDropdownItem>All Invoices</div>-->
+                <!--                    <div ngbDropdownItem>Estimates</div>-->
+                <!--                    <div ngbDropdownItem>Paid</div>-->
+                <!--                    <div ngbDropdownItem>Pending Payment</div>-->
+                <!--                  </div>-->
+                <!--                </div>-->
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_filter" id="datatables-basic_filter">
+                <label>Search:
+                  <input (keyup)="updateFilter($event)" class="form-control form-control-sm"
+                         placeholder="search by name.." type="search">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+
+              <ngx-datatable
+                #table
+                [columnMode]="'force'"
+                [footerHeight]="50"
+                [headerHeight]="50"
+                [limit]="limit"
+                [rowHeight]="'auto'"
+                [rows]='rows'
+                class='material'>
+                [selected]="selected"
+                [selectionType]="'checkbox'"
+                (activate)="onActivate($event)"
+                (select)='onSelect($event)'>
+                <ngx-datatable-column name="Date" prop="createdAt">
+                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    {{ value | date:'mediumDate' }}
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Name"></ngx-datatable-column>
+                <ngx-datatable-column name="Number"></ngx-datatable-column>
+                <ngx-datatable-column name="Vehicle">
+                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    {{ value.year}} {{ value.model }}
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Status">
+                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <div class="invoice-status-{{ value }}">{{ value }}</div>
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Total">
+                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    ${{ value }}
+                  </ng-template>
+                </ngx-datatable-column>
+              </ngx-datatable>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
