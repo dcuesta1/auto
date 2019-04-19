@@ -63,7 +63,7 @@
               <li><a href="/services/steering_and_suspension_system">Steering & Suspension System</a></li>
               <li><a href="/services/transmission_repair">Transmission Repair</a></li>
             </ul>
-          </li> 
+          </li>
           <li>
             <a class="btn" href="tel:+3212891668">
               <i class="fa fa-phone"></i>
@@ -72,7 +72,7 @@
           </li>
         </ul>
       </nav><!-- .main-nav -->
-      
+
     </div>
   </header><!-- #header -->
 
@@ -141,8 +141,12 @@
   <div id="preloader"></div>
 
   <!-- JavaScript -->
-  <script src="{{ URL::asset('js/vendors.js') }}"></script>
-  <script src="{{ URL::asset('js/cuesta-light19.js') }}"></script>
+  @if(App::environment('production'))
+    <script src="{{ URL::asset('js/cuesta-light.min.js') }}"></script>
+  @else
+    <script src="{{ URL::asset('js/vendors.js') }}"></script>
+    <script src="{{ URL::asset('js/cuesta-light.js') }}"></script>
+  @endif
 
 </body>
 </html>

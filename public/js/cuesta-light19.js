@@ -1,287 +1,162 @@
-(function ($) {
-  "use strict"; // Preloader (if the #preloader div exists)
+!function (e) {
+  "use strict";
 
-  $(window).on('load', function () {
-    if ($('#preloader').length) {
-      $('#preloader').delay(100).fadeOut('slow', function () {
-        $(this).remove();
-      });
-    }
-  }); // Back to top button
-
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn('slow');
-    } else {
-      $('.back-to-top').fadeOut('slow');
-    }
-  });
-  $('.back-to-top').click(function () {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 1500, 'easeInOutExpo');
-    return false;
-  }); // Initiate the wowjs animation library
-
-  new WOW().init(); // Header scroll class
-
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 100) {
-      $('#header').addClass('header-scrolled');
-    } else {
-      $('#header').removeClass('header-scrolled');
-    }
-  });
-
-  if ($(window).scrollTop() > 100) {
-    $('#header').addClass('header-scrolled');
-  } // Smooth scroll for the navigation and links with .scrollto classes
-
-
-  $('.main-nav a, .mobile-nav a, .scrollto').on('click', function () {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-
-      if (target.length) {
-        var top_space = 0;
-
-        if ($('#header').length) {
-          top_space = $('#header').outerHeight();
-
-          if (!$('#header').hasClass('header-scrolled')) {
-            top_space = top_space - 20;
-          }
-        }
-
-        $('html, body').animate({
-          scrollTop: target.offset().top - top_space
-        }, 1500, 'easeInOutExpo');
-
-        if ($(this).parents('.main-nav, .mobile-nav').length) {
-          $('.main-nav .active, .mobile-nav .active').removeClass('active');
-          $(this).closest('li').addClass('active');
-        }
-
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-          $('.mobile-nav-overly').fadeOut();
-        }
-
-        return false;
-      }
-    }
-  }); // Navigation active state on scroll
-
-  var nav_sections = $('section');
-  var main_nav = $('.main-nav, .mobile-nav');
-  var main_nav_height = $('#header').outerHeight();
-  $(window).on('scroll', function () {
-    var cur_pos = $(this).scrollTop();
-    nav_sections.each(function () {
-      var top = $(this).offset().top - main_nav_height,
-          bottom = top + $(this).outerHeight();
-
-      if (cur_pos >= top && cur_pos <= bottom) {
-        main_nav.find('li').removeClass('active');
-        main_nav.find('a[href="#' + $(this).attr('id') + '"]').parent('li').addClass('active');
-      }
+  e(window).on("load", function () {
+    e("#preloader").length && e("#preloader").delay(100).fadeOut("slow", function () {
+      e(this).remove();
     });
-  }); // Testimonials carousel (uses the Owl Carousel library)
+  }), e(window).scroll(function () {
+    e(this).scrollTop() > 100 ? e(".back-to-top").fadeIn("slow") : e(".back-to-top").fadeOut("slow");
+  }), e(".back-to-top").click(function () {
+    return e("html, body").animate({
+      scrollTop: 0
+    }, 1500, "easeInOutExpo"), !1;
+  }), new WOW().init(), e(window).scroll(function () {
+    e(this).scrollTop() > 100 ? e("#header").addClass("header-scrolled") : e("#header").removeClass("header-scrolled");
+  }), e(window).scrollTop() > 100 && e("#header").addClass("header-scrolled"), e(".main-nav a, .mobile-nav a, .scrollto").on("click", function () {
+    if (location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") && location.hostname == this.hostname) {
+      var a = e(this.hash);
 
-  $(".testimonials-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
+      if (a.length) {
+        var t = 0;
+        return e("#header").length && (t = e("#header").outerHeight(), e("#header").hasClass("header-scrolled") || (t -= 20)), e("html, body").animate({
+          scrollTop: a.offset().top - t
+        }, 1500, "easeInOutExpo"), e(this).parents(".main-nav, .mobile-nav").length && (e(".main-nav .active, .mobile-nav .active").removeClass("active"), e(this).closest("li").addClass("active")), e("body").hasClass("mobile-nav-active") && (e("body").removeClass("mobile-nav-active"), e(".mobile-nav-toggle i").toggleClass("fa-times fa-bars"), e(".mobile-nav-overly").fadeOut()), !1;
+      }
+    }
+  });
+  var a = e("section"),
+      t = e(".main-nav, .mobile-nav"),
+      o = e("#header").outerHeight();
+  e(window).on("scroll", function () {
+    var n = e(this).scrollTop();
+    a.each(function () {
+      var a = e(this).offset().top - o,
+          s = a + e(this).outerHeight();
+      n >= a && n <= s && (t.find("li").removeClass("active"), t.find('a[href="#' + e(this).attr("id") + '"]').parent("li").addClass("active"));
+    });
+  }), e(".testimonials-carousel").owlCarousel({
+    autoplay: !0,
+    dots: !0,
+    loop: !0,
     items: 1
-  }); // Services at homepage links
-
-  $(".services-item").on('click', function (e) {
+  }), e(".services-item").on("click", function (e) {
     window.location.href = e.currentTarget.dataset.anchor;
   });
-  var urlOrigin = document.location.origin;
-  $("#mobile_call_button").on('click', function (e) {
-    $.ajax({
-      url: urlOrigin + "/track",
+  var n = document.location.origin;
+  e("#mobile_call_button").on("click", function (a) {
+    e.ajax({
+      url: n + "/track",
       headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        "X-CSRF-TOKEN": e('meta[name="csrf-token"]').attr("content")
       },
-      method: 'POST',
+      method: "POST",
       data: {
         item: "mobile_call_button"
       },
-      success: function success(data) {
-        console.log('succes: ' + data);
+      success: function success(e) {
+        console.log("succes: " + e);
       }
     });
   });
-})(jQuery);
+}(jQuery), function (e) {
+  "use strict";
 
-(function ($) {
-  "use strict"; // Mobile Navigation
+  if (e(".main-nav").length) {
+    var a = e(".main-nav").clone().prop({
+      "class": "mobile-nav d-lg-none"
+    });
+    e("body").append(a), e("body").prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="fa fa-bars"></i></button>'), e("body").append('<div class="mobile-nav-overly"></div>'), e(document).on("click", ".mobile-nav-toggle", function (a) {
+      e("body").toggleClass("mobile-nav-active"), e(".mobile-nav-toggle i").toggleClass("fa-times fa-bars"), e(".mobile-nav-overly").toggle();
+    }), e(document).on("click", ".mobile-nav .drop-down > a", function (a) {
+      a.preventDefault(), e(this).next().slideToggle(300), e(this).parent().toggleClass("active");
+    }), e(document).click(function (a) {
+      var t = e(".mobile-nav, .mobile-nav-toggle");
+      t.is(a.target) || 0 !== t.has(a.target).length || e("body").hasClass("mobile-nav-active") && (e("body").removeClass("mobile-nav-active"), e(".mobile-nav-toggle i").toggleClass("fa-times fa-bars"), e(".mobile-nav-overly").fadeOut());
+    });
+  } else e(".mobile-nav, .mobile-nav-toggle").length && e(".mobile-nav, .mobile-nav-toggle").hide();
+}(jQuery), jQuery(document).ready(function (e) {
+  "use strict";
 
-  if ($('.main-nav').length) {
-    var $mobile_nav = $('.main-nav').clone().prop({
-      "class": 'mobile-nav d-lg-none'
-    });
-    $('body').append($mobile_nav);
-    $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="fa fa-bars"></i></button>');
-    $('body').append('<div class="mobile-nav-overly"></div>');
-    $(document).on('click', '.mobile-nav-toggle', function (e) {
-      $('body').toggleClass('mobile-nav-active');
-      $('.mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-      $('.mobile-nav-overly').toggle();
-    });
-    $(document).on('click', '.mobile-nav .drop-down > a', function (e) {
-      e.preventDefault();
-      $(this).next().slideToggle(300);
-      $(this).parent().toggleClass('active');
-    });
-    $(document).click(function (e) {
-      var container = $(".mobile-nav, .mobile-nav-toggle");
+  e("form.contactForm").submit(function () {
+    var a = e(this).find(".form-group"),
+        t = !1,
+        o = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
+    if (a.children("input").each(function () {
+      var a = e(this),
+          n = a.attr("data-rule");
 
-      if (!container.is(e.target) && container.has(e.target).length === 0) {
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-          $('.mobile-nav-overly').fadeOut();
+      if (void 0 !== n) {
+        var s = !1,
+            l = n.indexOf(":", 0);
+
+        if (l >= 0) {
+          var i = n.substr(l + 1, n.length);
+          n = n.substr(0, l);
+        } else n = n.substr(l + 1, n.length);
+
+        switch (n) {
+          case "required":
+            "" === a.val() && (t = s = !0);
+            break;
+
+          case "minlen":
+            a.val().length < parseInt(i) && (t = s = !0);
+            break;
+
+          case "email":
+            o.test(a.val()) || (t = s = !0);
+            break;
+
+          case "checked":
+            a.is(":checked") || (t = s = !0);
+            break;
+
+          case "regexp":
+            (i = new RegExp(i)).test(a.val()) || (t = s = !0);
         }
+
+        a.next(".validation").html(s ? void 0 !== a.attr("data-msg") ? a.attr("data-msg") : "wrong Input" : "").show("blind");
       }
-    });
-  } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
-    $(".mobile-nav, .mobile-nav-toggle").hide();
-  }
-})(jQuery);
+    }), a.children("textarea").each(function () {
+      var a = e(this),
+          o = a.attr("data-rule");
 
-jQuery(document).ready(function (jQuery) {
-  "use strict"; //Contact
+      if (void 0 !== o) {
+        var n = !1,
+            s = o.indexOf(":", 0);
 
-  jQuery('form.contactForm').submit(function () {
-    var f = jQuery(this).find('.form-group'),
-        ferror = false,
-        emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
-    f.children('input').each(function () {
-      // run all inputs
-      var i = jQuery(this); // current input
+        if (s >= 0) {
+          var l = o.substr(s + 1, o.length);
+          o = o.substr(0, s);
+        } else o = o.substr(s + 1, o.length);
 
-      var rule = i.attr('data-rule');
+        switch (o) {
+          case "required":
+            "" === a.val() && (t = n = !0);
+            break;
 
-      if (rule !== undefined) {
-        var ierror = false; // error flag for current input
-
-        var pos = rule.indexOf(':', 0);
-
-        if (pos >= 0) {
-          var exp = rule.substr(pos + 1, rule.length);
-          rule = rule.substr(0, pos);
-        } else {
-          rule = rule.substr(pos + 1, rule.length);
+          case "minlen":
+            a.val().length < parseInt(l) && (t = n = !0);
         }
 
-        switch (rule) {
-          case 'required':
-            if (i.val() === '') {
-              ferror = ierror = true;
-            }
-
-            break;
-
-          case 'minlen':
-            if (i.val().length < parseInt(exp)) {
-              ferror = ierror = true;
-            }
-
-            break;
-
-          case 'email':
-            if (!emailExp.test(i.val())) {
-              ferror = ierror = true;
-            }
-
-            break;
-
-          case 'checked':
-            if (!i.is(':checked')) {
-              ferror = ierror = true;
-            }
-
-            break;
-
-          case 'regexp':
-            exp = new RegExp(exp);
-
-            if (!exp.test(i.val())) {
-              ferror = ierror = true;
-            }
-
-            break;
-        }
-
-        i.next('.validation').html(ierror ? i.attr('data-msg') !== undefined ? i.attr('data-msg') : 'wrong Input' : '').show('blind');
+        a.next(".validation").html(n ? null != a.attr("data-msg") ? a.attr("data-msg") : "wrong Input" : "").show("blind");
       }
-    });
-    f.children('textarea').each(function () {
-      // run all inputs
-      var i = jQuery(this); // current input
-
-      var rule = i.attr('data-rule');
-
-      if (rule !== undefined) {
-        var ierror = false; // error flag for current input
-
-        var pos = rule.indexOf(':', 0);
-
-        if (pos >= 0) {
-          var exp = rule.substr(pos + 1, rule.length);
-          rule = rule.substr(0, pos);
-        } else {
-          rule = rule.substr(pos + 1, rule.length);
-        }
-
-        switch (rule) {
-          case 'required':
-            if (i.val() === '') {
-              ferror = ierror = true;
-            }
-
-            break;
-
-          case 'minlen':
-            if (i.val().length < parseInt(exp)) {
-              ferror = ierror = true;
-            }
-
-            break;
-        }
-
-        i.next('.validation').html(ierror ? i.attr('data-msg') != undefined ? i.attr('data-msg') : 'wrong Input' : '').show('blind');
-      }
-    });
-    if (ferror) return false;else var str = jQuery(this).serialize();
-    var action = jQuery(this).attr('action');
-    jQuery.ajax({
+    }), t) return !1;
+    var n = e(this).serialize(),
+        s = e(this).attr("action");
+    return e.ajax({
       type: "POST",
-      url: action,
-      data: str,
+      url: s,
+      data: n,
       headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
       },
-      success: function success(msg) {
-        // alert(msg);
-        if (msg == 'OK') {
-          jQuery("#sendmessage").addClass("show");
-          jQuery("#errormessage").removeClass("show");
-          setTimeout(function () {
-            $('#sendmessage').removeClass('show');
-          }, 4000);
-          jQuery('.contactForm').find("input, textarea").val("");
-        } else {
-          jQuery("#sendmessage").removeClass("show");
-          jQuery("#errormessage").addClass("show");
-          jQuery('#errormessage').html(msg);
-        }
+      success: function success(a) {
+        "OK" == a ? (e("#sendmessage").addClass("show"), e("#errormessage").removeClass("show"), setTimeout(function () {
+          $("#sendmessage").removeClass("show");
+        }, 4e3), e(".contactForm").find("input, textarea").val("")) : (e("#sendmessage").removeClass("show"), e("#errormessage").addClass("show"), e("#errormessage").html(a));
       }
-    });
-    return false;
+    }), !1;
   });
 });

@@ -1,6 +1,6 @@
 {
-    "/css/theme.css": "/css/theme.css",
-    "/js/cuesta-light19.es6.js": "/js/cuesta-light19.es6.js",
-    "/js/cuesta-light19.js": "/js/cuesta-light19.js",
-    "/js/vendors.js": "/js/vendors.js"
+    "/css/theme.css": "/css/theme.css?id=e43a40977317445ae4e4",
+    "/js/cuesta-light.js": "/js/cuesta-light.js?id=4fb4e76f9e81f8421a19",
+    "/js/vendors.js": "/js/vendors.js?id=52e3d69de55acd67fda8",
+    "/js/cuesta-light.min.js": "/js/cuesta-light.min.js?id=79d304a786babf9f01e7"
 }
