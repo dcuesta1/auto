@@ -33,5 +33,6 @@ return [
             'desc' => 'In contrast to the cooling system, which removes heat from the engine, the heating system transfers the engine’s heat to the vehicle’s interior',
             'file' => 'heating_system_service'
         ]
-    ]
+    ],
+    'icon' => 'temp'
 ];

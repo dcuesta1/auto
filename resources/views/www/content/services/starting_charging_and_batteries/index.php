@@ -33,5 +33,6 @@ return [
             'desc' => 'The starting and charging system is responsible for starting and keeping the engine running. The starting and charging system is also',
             'file' => 'starting_and_charging_system_check'
         ]
-    ]
+    ],
+    'icon' => 'battery'
 ];

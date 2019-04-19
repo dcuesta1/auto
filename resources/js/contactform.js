@@ -95,6 +95,10 @@ jQuery(document).ready(function(jQuery) {
         type: "POST",
         url: action,
         data: str,
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         success: function(msg) {
           // alert(msg);
           if (msg == 'OK') {

@@ -33,5 +33,6 @@ return [
             'desc' => 'The timing belt, or timing chain in some vehicles, is a drive belt that synchronizes the rotation of the engine’s',
             'file' => 'timing_belt_replacement'
         ]
-    ]
+    ],
+    'icon' => 'belts'
 ];

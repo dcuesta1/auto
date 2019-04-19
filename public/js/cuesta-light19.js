@@ -99,6 +99,22 @@
   $(".services-item").on('click', function (e) {
     window.location.href = e.currentTarget.dataset.anchor;
   });
+  var urlOrigin = document.location.origin;
+  $("#mobile_call_button").on('click', function (e) {
+    $.ajax({
+      url: urlOrigin + "/track",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      method: 'POST',
+      data: {
+        item: "mobile_call_button"
+      },
+      success: function success(data) {
+        console.log('succes: ' + data);
+      }
+    });
+  });
 })(jQuery);
 
 (function ($) {
@@ -106,7 +122,7 @@
 
   if ($('.main-nav').length) {
     var $mobile_nav = $('.main-nav').clone().prop({
-      class: 'mobile-nav d-lg-none'
+      "class": 'mobile-nav d-lg-none'
     });
     $('body').append($mobile_nav);
     $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="fa fa-bars"></i></button>');
@@ -247,6 +263,10 @@ jQuery(document).ready(function (jQuery) {
       type: "POST",
       url: action,
       data: str,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
       success: function success(msg) {
         // alert(msg);
         if (msg == 'OK') {

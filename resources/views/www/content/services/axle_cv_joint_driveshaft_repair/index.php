@@ -15,22 +15,22 @@ return [
     'services' => [
         'cv_axle_inspection' => [
             'title' => 'CV Axle Inspection',
-            'desc' => 'The CV axle is a drive axle located between the drive wheels. Its role is to deliver consistent power to the wheels as they traverse various types of terrain. The CV axle is attached to the wheels',
+            'desc' => 'The CV axle is a drive axle located between the drive wheels. Its role is to deliver consistent power to the wheels as they',
             'file' => 'cv_axle_inspection'
         ],
         'cv_axle_replacement' => [
             'title' => 'CV Axle Replacement',
-            'desc' => 'CV axles were once primarily used on front-wheel drive vehicles. Today, CV axles are common on both front-wheel and rear-wheel drive vehicles. The CV axle assembly—the axle shaft, CV joints, and CV boots—is designed to flexibly deliver power to',
+            'desc' => 'CV axles were once primarily used on front-wheel drive vehicles. Today, CV axles are common on both front-wheel and',
             'file' => 'cv_axle_replacement'
         ],
         'cv_boot_replacement' => [
             'title' => 'CV Boot Replacement',
-            'desc' => 'CV joints connect the transmission to the wheels and are an important part of your vehicle’s drive axles. Each drive axle has two CV joints',
+            'desc' => 'CV joints connect the transmission to the wheels and are an important part of your vehicle’s drive axles. Each drive',
             'file' => 'cv_boot_replacement'
         ],
         'cv_joint_replacement' => [
             'title' => 'CV Joint Replacement',
-            'desc' => 'Your vehicle’s CV joints connect to the drive axles, which connect the transmission to the wheels',
+            'desc' => 'Your vehicle’s CV joints connect to the drive axles, which connect the transmission to the wheels. The inner CV joint',
             'file' => 'cv_joint_replacement'
         ],
         'u_joint_replacement' => [
@@ -43,5 +43,6 @@ return [
             'desc' => 'Driveshaft yokes are located on the ends of the driveshaft. One yoke connects the driveshaft to the rear of the vehicle',
             'file' => 'yoke_replacement'
         ],
-    ]
+    ],
+    'icon' => 'axle'
 ];

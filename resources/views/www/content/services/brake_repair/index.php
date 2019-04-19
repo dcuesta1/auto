@@ -43,5 +43,6 @@ return [
             'desc' => 'Whether you have a disc brake system or a drum brake system, you have a parking brake that is responsible for locking your vehicle',
             'file' => 'parking_brake_adjusment'
         ]
-    ]
+    ],
+    'icon' => 'brakes'
 ];

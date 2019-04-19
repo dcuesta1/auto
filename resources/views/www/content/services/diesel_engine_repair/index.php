@@ -33,5 +33,6 @@ return [
             'desc' => 'Diesel engines contain many components and small systems that, when damaged or worn, can lead to hard starting and',
             'file' => 'hard_starting_and_drivability_diagnostic'
         ]
-    ]
+    ],
+    'icon' => 'diesel'
 ];

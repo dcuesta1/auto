@@ -15,9 +15,9 @@
   </div>
 </section><!-- #intro -->
 <section id="coupon-review-section">
-  {{-- <div class="contatiner">
-    <div class="row"> --}}
-      <div class="col-lg-5 wow rollIn" data-wow-delay="1s">
+  <div class="contatiner">
+    <div class="row">
+      <div class="col-lg-5 col-sm-12 wow rollIn" data-wow-delay="1s">
         <div class="couponList coupon-carousel">
           <div class="coupon">
             <div class="title"><strong>Get $20 off</strong>Labor Charge</div>
@@ -25,8 +25,8 @@
           </div>
         </div>
       </div>
-      <div id="testimonials" class="col-xs-12 col-lg-7">
-        <div class="section-header"><h2>Customer&apos;s Reviews</h2></div>
+      <div id="testimonials" class="col-sm-12 col-lg-7">
+        <div class="section-header"><h2>Customer&#8217;	s Reviews</h2></div>
         <div class="owl-carousel testimonials-carousel wow fadeInUp">
 
           <div class="testimonial-item">
@@ -42,7 +42,7 @@
                 Gary is the best mechanic. His work is excellent. His rates are very fair. We have been taking our car to Gary for years. I highly recommend anyone in need of car repairs to take your car to Gary.
             </p>
           </div>
-  
+
           <div class="testimonial-item">
             <h3>Nicole Fraine</h3>
             <div class="testimonial-rating">
@@ -70,7 +70,7 @@
                 The very best repair in town very fair and honest!
               </p>
           </div>
-  
+
           <div class="testimonial-item">
             <h3>Candace</h3>
             <div class="testimonial-rating">
@@ -85,9 +85,9 @@
               </p>
           </div>
         </div>
-      </div>  
-    {{-- </div>
-  </div> --}}
+      </div>
+    </div>
+  </div>
 </section>
 @endsection
 
@@ -100,13 +100,13 @@
 
     <header class="section-header">
       <h3>Welcome to <span>Our Shop</span></h3>
-      {{-- <p style="width: 100%; color:#4680ff; font-weight: bold; text-transform: uppercase">Beatty's Auto Repair is dedicated to providing quality service at affordable prices.</p> --}}
+      {{-- <p style="width: 100%; color:#4680ff; font-weight: bold; text-transform: uppercase">Beatty&#8217;s Auto Repair is dedicated to providing quality service at affordable prices.</p> --}}
     </header>
 
     <div class="row about-container">
 
       <div class="col-lg-6 content order-lg-2 order-1 wow fadeInUp">
-        <p>With over 40 years of experience, we can handle any mechanical repair. Our mechanics are provided with continual training and have the tools and equipment necessary to service and repair today's vehicles. We have access to all vehicles factory maintenance schedules and service specifications. We are equipped to work on all makes and models, and provide accurate auto repair estimates.</p>
+        <p>With over 40 years of experience, we can handle any mechanical repair. Our mechanics are provided with continual training and have the tools and equipment necessary to service and repair today&#8217;s vehicles. We have access to all vehicles factory maintenance schedules and service specifications. We are equipped to work on all makes and models, and provide accurate auto repair estimates.</p>
         {{-- <div class="icon-box wow fadeInUp">
           <div class="icon"><i class="fa fa-shopping-bag"></i></div>
           <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
@@ -121,7 +121,7 @@
 
         <h4>Quality Service</h4>
         <p>
-            At Beatty's Auto Repair, we understand that being without your vehicle can become quite a hassle. That is why we do our best to finish your car repairs and get your vehicle returned to you in a timely fashion. Our estimates are accurate, and repairs are appropriately priced so that you are not left spending an arm and a leg.
+            At Beatty&#8217;s Auto Repair, we understand that being without your vehicle can become quite a hassle. That is why we do our best to finish your car repairs and get your vehicle returned to you in a timely fashion. Our estimates are accurate, and repairs are appropriately priced so that you are not left spending an arm and a leg.
         </p>
         <p>
             Whether it is a brake job, tune-up or a major repair, we can get the job done and get it done the right way the first time. When you need quality car repairs in the Titusville, Mims, Space Coast area, you can count on us.
@@ -129,7 +129,9 @@
 
       </div>
 
-      <div class="col-lg-6 background order-lg-1 order-2"></div>
+      <div class="col-lg-6 background order-lg-1 order-2">
+        <img src="{{ URL::asset('img/mechanic-1.jpg') }}" alt=""/>
+      </div>
     </div>
 
     {{-- <div class="row about-extra">
@@ -143,7 +145,7 @@
     </div> --}}
   </div>
 </section><!-- #about -->
-  
+
 {{-- <!--==========================
   Services Section
 ============================--> --}}
@@ -193,12 +195,12 @@
           <p class="description">Every vehicle built since 1996 has been equipped with an On-Board Diagnostics System that monitors engine performance...</p>
         </div>
       </div>
-    <p class="text-center" style="width: 100%">Visit our <a href="{{ URL::to('/services') }}">Services</a> page to read more about what other services we can do for your car.</p>  
+    <p class="text-center" style="width: 100%">Visit our <a href="{{ URL::to('/services') }}">Services</a> page to read more about what other services we can do for your car.</p>
     </div>
 
   </div>
 </section><!-- #services -->
-  
+
 {{-- <!--==========================
   Why Us Section
 ============================--> --}}
@@ -226,7 +228,7 @@
           <i class="fa fa-exclamation-circle"></i>
           <div class="card-body">
             <h5 class="card-title">NO SURPRISES</h5>
-            <p class="card-text">At Beatty's Auto Repair, we’re upfront and honest. You’ll pay for only the auto repair services you’ve agreed to – and the price you’ll see on your auto repair invoice will be the price in the estimate.</p>
+            <p class="card-text">At Beatty&#8217;s Auto Repair, we’re upfront and honest. You’ll pay for only the auto repair services you’ve agreed to – and the price you’ll see on your auto repair invoice will be the price in the estimate.</p>
           </div>
         </div>
       </div>
@@ -244,7 +246,7 @@
     </div>
   </div>
 </section>
-  
+
 {{-- <!--==========================
   Partners Section
 ============================--> --}}
@@ -254,7 +256,7 @@
 
     <div class="section-header">
       <h3>Our Trusted Partners</h3>
-      
+
     </div>
 
     <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
@@ -264,19 +266,19 @@
           <img src="{{ URL::asset('img/partners/bennet.jpg') }}" class="img-fluid" alt="Bennet">
         </div>
       </div>
-      
+
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
           <img src="{{ URL::asset('img/partners/autozone.png') }}" class="img-fluid" alt="Autozone">
         </div>
       </div>
-    
+
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
           <img src="{{ URL::asset('img/partners/advance.jpg') }}" class="img-fluid" alt="Advance">
         </div>
       </div>
-      
+
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
           <img src="{{ URL::asset('img/partners/napa.svg') }}" class="img-fluid" alt="Bennet">

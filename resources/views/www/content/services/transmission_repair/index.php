@@ -28,5 +28,6 @@ return [
             'desc' => 'Whether your vehicle has an automatic or manual transmission, the responsibility of the transmission remains the same',
             'file' => 'transmission_replacement'
         ]
-    ]
+    ],
+    'icon' => 'transmission'
 ];

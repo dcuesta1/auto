@@ -43,5 +43,6 @@ return [
             'desc' => 'Attached to each wheel in your vehicle’s suspension system is a stabilizer bar called the sway bar. The sway bar is charged with',
             'file' => 'sway_bar_link_replacement'
         ]
-    ]
+    ],
+    'icon' => 'steering'
 ];

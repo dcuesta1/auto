@@ -23,5 +23,6 @@ return [
             'desc' => 'In the past, engine tune-ups were much more time consuming because they required a motorist to check a variety of parts',
             'file' => 'engine_tune_up'
         ]
-    ]
+    ],
+    'icon' => 'engine'
 ];

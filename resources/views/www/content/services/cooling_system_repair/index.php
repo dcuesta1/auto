@@ -28,5 +28,6 @@ return [
             'desc' => 'The radiator on your car helps keep your engine cool. An overheated engine will lead to a breakdown, so radiator maintenance',
             'file' => 'replace_radiator'
         ]
-    ]
+    ],
+    'icon' => 'cooling'
 ];

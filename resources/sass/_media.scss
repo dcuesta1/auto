@@ -3,14 +3,14 @@
 --------------------------------------------------------------*/
 
 @media (max-width: 1619px) and (min-width: 1224px) {
-  .template-home .module-couponslist .coupon {
-    padding: 30px 0 20px 50px;
-    margin-left: 25px;
-    margin-right: 25px;
-    -webkit-box-shadow: 0 5px 20px 4px rgba(255,0,0,.7);
-    -moz-box-shadow: 0 5px 20px 4px rgba(255,0,0,.7);
-    box-shadow: 0 5px 20px 4px rgba(255,0,0,.7);
-  } 
+  // .template-home .module-couponslist .coupon {
+  //   padding: 30px 0 20px 50px;
+  //   margin-left: 25px;
+  //   margin-right: 25px;
+  //   -webkit-box-shadow: 0 5px 20px 4px rgba(255,0,0,.7);
+  //   -moz-box-shadow: 0 5px 20px 4px rgba(255,0,0,.7);
+  //   box-shadow: 0 5px 20px 4px rgba(255,0,0,.7);
+  // } 
 }
 
 @media (min-width: 992px) {
@@ -19,11 +19,17 @@
   }
 }
 
-@include media-breakpoint-down(lg) {
+@media (max-width: 1100px) {
+  #coupon-review-section .couponList .coupon .title strong{
+      font: 700 51px/1em "Glacial", Arial, sans-serif;
+  }
+}
+
+@include media-breakpoint-down(md) {
   #coupon-review-section {
-    .row {
-      margin-right: -15px;
-    }
+    // .row {
+    //   margin-right: -15px;
+    // }
     .couponList {
       .coupon {
         margin: 0;
@@ -33,6 +39,12 @@
         min-height: auto;
         text-align: center;
       }
+    }
+
+    #testimonials {
+      padding: 40px 0 0 20px;
+      margin: 0 auto;
+      max-width: 720px;
     }
   }
 }  

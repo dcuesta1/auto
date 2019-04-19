@@ -48,5 +48,6 @@ return [
         //     'desc' => 'Every 90,000 miles no matter what year, make, and model of your vehicle the Manufacturer requires',
         //     'file' => '90,000_mile_service'
         // ]
-    ]
+    ],
+    'icon' => 'maintenance',
 ];

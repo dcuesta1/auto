@@ -106,6 +106,24 @@
     window.location.href = e.currentTarget.dataset.anchor;
   });
 
+  var urlOrigin = document.location.origin;
+
+  $("#mobile_call_button").on('click', function(e) {
+    $.ajax({
+      url: urlOrigin + "/track",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      method: 'POST',
+      data: { 
+        item: "mobile_call_button" 
+      },
+      success: function (data) {
+        console.log('succes: ' + data);
+      }
+    });
+  });
+
 })(jQuery);
 
 
@@ -246,6 +264,10 @@ jQuery(document).ready(function(jQuery) {
         type: "POST",
         url: action,
         data: str,
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
         success: function(msg) {
           // alert(msg);
           if (msg == 'OK') {

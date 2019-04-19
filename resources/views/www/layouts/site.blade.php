@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138386680-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-138386680-1');
+  </script>
+
   <meta charset="utf-8">
   <title>@yield('title') Complete Auto Repair Services for Titusville, Mims area</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
@@ -24,7 +34,7 @@
 
 <body>
   <header id="header" class="fixed-top">
-    <a href="tel:+13212891668" class="tap-to-call d-sm-none d-md-none d-lg-none d-xl-none clearfix">
+    <a id="mobile_call_button" href="tel:+13212891668" class="tap-to-call d-sm-none d-md-none d-lg-none d-xl-none clearfix">
       Tap here to call us: (321) 289-1668
     </a>
     <div class="container">
@@ -36,7 +46,7 @@
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
         <li {{ Request::route()->getName() == 'home' ? 'class="active"' : '' }}><a href="{{ URL::to('/#intro') }}">Home</a></li>
-          <li><a href="{{ URL::to('/#about') }}">About Beatty's</a></li>
+          <li><a href="{{ URL::to('/#about') }}">About Beatty&#8217;s</a></li>
           <li><a href="{{ URL::to('/#why-us') }}">Why choose us?</a></li>
           <li class="drop-down {{ Request::route()->getName() != 'home' ? 'active' : '' }}"><a href="/services">Services</a>
             <ul>
@@ -84,7 +94,7 @@
         <div class="row">
 
           <div class="col-lg-4 footer-info">
-            <h3>Beatty's Auto Repair</h3>
+            <h3>Beatty&#8217;s Auto Repair</h3>
             <p>From bumper to bumper, we have you covered. We utilize the very latest in automotive repair technology for a fast turnaround time, ensuring you spend less time in the shop, and more time on the road.</p>
           </div>
 
@@ -122,7 +132,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>Beatty's Auto Repair</strong>. All Rights Reserved
+        &copy; Copyright <strong>Beatty&#8217;s Auto Repair</strong>. All Rights Reserved
       </div>
     </div>
   </footer><!-- #footer -->

@@ -106,5 +106,23 @@
     window.location.href = e.currentTarget.dataset.anchor;
   });
 
+  var urlOrigin = document.location.origin;
+
+  $("#mobile_call_button").on('click', function(e) {
+    $.ajax({
+      url: urlOrigin + "/track",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      method: 'POST',
+      data: { 
+        item: "mobile_call_button" 
+      },
+      success: function (data) {
+        console.log('succes: ' + data);
+      }
+    });
+  });
+
 })(jQuery);
 

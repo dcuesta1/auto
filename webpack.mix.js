@@ -1,4 +1,4 @@
-const mix = require("laravel-mi");
+const mix = require("laravel-mix");
 
 mix.scripts([
       'resources/js/main.js',

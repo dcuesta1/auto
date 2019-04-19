@@ -43,5 +43,6 @@ return [
             'desc' => 'Introduced in 1940, power windows are a common feature in many modern cars, trucks, and SUVs',
             'file' => 'power_window_repair'
         ]
-    ]
+    ],
+    'icon' => 'electrical'
 ];

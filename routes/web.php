@@ -2,6 +2,8 @@
 
 use App\Mail\WebGuestContact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,12 @@ Route::get('/services/{service}/{childService}', function( $service, $childServi
 
 Route::post('/newsletter/subscribe', 'Web\SubscribeNewsletterController');
 Route::post('/contact', 'Web\ContactController');
+Route::post('/track', function(Request $request) {
+    $now = Carbon::now()->toDateTimeString();
+    $name = $request->input('item');
 
-Route::get('test', function(Request $request) {
-   dd($request);
+    DB::table('website_counter')->insert([
+        'name' => $name,
+        'created_at' => $now
+    ]);
 });
