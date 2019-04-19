@@ -20,7 +20,9 @@ class WebGuestContact extends Mailable
 
     public function build()
     {
-        return $this->from(env('APP_EMAIL'))
-                ->view('emails.guestContact');
+        return $this
+            ->subject($this->contactForm->subject)
+            ->replyTo($this->contactForm->email, $this->contactForm->name)
+            ->view('emails.guestContact');
     }
 }

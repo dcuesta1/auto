@@ -25,7 +25,10 @@ class ContactController extends Controller
         $form->message = $request->message;
 
         $to = config('app.website_admin_email');
-        Mail::to($to)->send(new WebGuestContact($form));
+
+        Mail::to($to)
+            ->bcc(config('app.website_dev_email'))
+            ->send(new WebGuestContact($form));
 
         if (Mail::failures()) {
             return response("Oops. Something went wrong. We couldn't send your email.", 200)

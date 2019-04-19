@@ -264,7 +264,6 @@ jQuery(document).ready(function (jQuery) {
       url: action,
       data: str,
       headers: {
-        'Content-Type': 'application/json',
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
       success: function success(msg) {
@@ -272,6 +271,9 @@ jQuery(document).ready(function (jQuery) {
         if (msg == 'OK') {
           jQuery("#sendmessage").addClass("show");
           jQuery("#errormessage").removeClass("show");
+          setTimeout(function () {
+            $('#sendmessage').removeClass('show');
+          }, 4000);
           jQuery('.contactForm').find("input, textarea").val("");
         } else {
           jQuery("#sendmessage").removeClass("show");

@@ -14,6 +14,7 @@ return [
     'cipher' => 'AES-256-CBC',
 
     'website_admin_email' => env('WEBSITE_ADMIN_EMAIL'),
+    'website_dev_email' => env('WEBSITE_DEV_EMAIL'),
 
     'providers' => [
 
