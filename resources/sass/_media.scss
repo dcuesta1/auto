@@ -2,20 +2,13 @@
 # Responsive Media Queries
 --------------------------------------------------------------*/
 
-@media (max-width: 1619px) and (min-width: 1224px) {
-  // .template-home .module-couponslist .coupon {
-  //   padding: 30px 0 20px 50px;
-  //   margin-left: 25px;
-  //   margin-right: 25px;
-  //   -webkit-box-shadow: 0 5px 20px 4px rgba(255,0,0,.7);
-  //   -moz-box-shadow: 0 5px 20px 4px rgba(255,0,0,.7);
-  //   box-shadow: 0 5px 20px 4px rgba(255,0,0,.7);
-  // } 
-}
-
 @media (min-width: 992px) {
   #intro.owl-carousel .owl-nav {
     padding: 40px;
+  }
+
+  .sitemap-box {
+    padding-top: 60px;
   }
 }
 
@@ -26,28 +19,8 @@
 }
 
 @include media-breakpoint-down(md) {
-  #coupon-review-section {
-    // .row {
-    //   margin-right: -15px;
-    // }
-    .couponList {
-      .coupon {
-        margin: 0;
-        padding: 50px 0;
-        border-radius: 0;
-        box-shadow: none;
-        min-height: auto;
-        text-align: center;
-      }
-    }
 
-    #testimonials {
-      padding: 40px 0 0 20px;
-      margin: 0 auto;
-      max-width: 720px;
-    }
-  }
-}  
+}
 @media (max-width: 991px) {
   #header {
     height: 60px;
@@ -73,7 +46,7 @@
   }
 
   #about {
-    background: url(https://www.universitytirecenter.com/Themes/Automotive/Assets/images/tires.png) no-repeat top right/50%;
+    background: url(../images/car-parts.png) no-repeat top right/50%;
     .section-header {
       margin-top: 100px;
     }
@@ -113,6 +86,25 @@
       font-size: 60px;
     }
   }
+
+    #coupon-review-section {
+    .couponList {
+      .coupon {
+        margin: 0;
+        padding: 50px 0;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: auto;
+        text-align: center;
+      }
+    }
+
+    #testimonials {
+      padding: 40px 0 0 20px;
+      margin: 0 auto;
+      max-width: 720px;
+    }
+  }
 }
 
 @media (max-width:576px) {
@@ -149,8 +141,8 @@
     top: 0;
   }
 }
-  
-  @include media-breakpoint-only(xs) { 
+
+  @include media-breakpoint-only(xs) {
     #header, #header.header-scrolled {
       padding: 0;
       height: 113px;

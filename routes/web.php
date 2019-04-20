@@ -39,6 +39,10 @@ Route::get('/services/{service}/{childService}', function( $service, $childServi
     return view('www.service', require $serviceFile);
 });
 
+Route::get('/sitemap', function() {
+    return view('www.sitemap');
+});
+
 Route::post('/newsletter/subscribe', 'Web\SubscribeNewsletterController');
 Route::post('/contact', 'Web\ContactController');
 Route::post('/track', function(Request $request) {

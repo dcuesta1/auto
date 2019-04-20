@@ -130,13 +130,13 @@
       </div>
 
       <div class="col-lg-6 background order-lg-1 order-2">
-        <img src="{{ URL::asset('img/mechanic-1.jpg') }}" alt=""/>
+        <img class="img-fluid" src="{{ URL::asset('images/auto-repair-in-titusville.jpg') }}" alt="Auto Repair shop in Titusville, FL."/>
       </div>
     </div>
 
     {{-- <div class="row about-extra">
       <div class="col-lg-6 wow fadeInUp">
-        <img src="img/about-extra-1.svg" class="img-f" alt="">
+        <img src="images/about-extra-1.svg" class="img-f" alt="">
       </div>
       <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
         <h4>About the owner</h4>
@@ -263,25 +263,25 @@
 
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
-          <img src="{{ URL::asset('img/partners/bennet.jpg') }}" class="img-fluid" alt="Bennet">
+          <img src="{{ URL::asset('images/partners/bennet.jpg') }}" class="img-fluid" alt="Bennet">
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
-          <img src="{{ URL::asset('img/partners/autozone.png') }}" class="img-fluid" alt="Autozone">
+          <img src="{{ URL::asset('images/partners/autozone.png') }}" class="img-fluid" alt="Autozone">
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
-          <img src="{{ URL::asset('img/partners/advance.jpg') }}" class="img-fluid" alt="Advance">
+          <img src="{{ URL::asset('images/partners/advance.jpg') }}" class="img-fluid" alt="Advance">
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
-          <img src="{{ URL::asset('img/partners/napa.svg') }}" class="img-fluid" alt="Bennet">
+          <img src="{{ URL::asset('images/partners/napa.svg') }}" class="img-fluid" alt="Bennet">
         </div>
       </div>
 

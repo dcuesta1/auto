@@ -40,7 +40,7 @@
     <div class="container">
 
       <div class="logo float-left">
-        <a href="{{ URL::to('./') }}" class="scrollto"><img src="{{ URL::asset('img/logo.png') }}" alt="Beatty's" class="img-fluid"></a>
+        <a href="{{ URL::to('./') }}" class="scrollto"><img src="{{ URL::asset('images/logo.png') }}" alt="Beatty's" class="img-fluid"></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">

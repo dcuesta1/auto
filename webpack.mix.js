@@ -22,7 +22,7 @@ mix.scripts([
     outputStyle: mix.inProduction ? 'compressed' : 'expanded'
   })
    // .copyDirectory('resources/lib/font-awesome/fonts', 'public/fonts')
-   .copyDirectory('resources/img', 'public/img');
+   .copyDirectory('resources/images', 'public/images');
 
 // version
 if (mix.inProduction) {

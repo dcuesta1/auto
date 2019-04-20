@@ -15,97 +15,114 @@
       transform: skewY(-7deg);
       z-index: -1;
     }
-    .section-header {
-      h3{
-        margin-bottom: 40px;
-        color: #251967;
-        text-align: left;
-        font: 700 4.563em/1em 'Glacial',Arial,sans-serif;
+
+  img {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      content:" ";
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      display: block;
+      z-index:0;
+      background-color: rgba(0,0,0,0.34);
+    }
+  }
+
+  .section-header {
+    h3{
+      margin-bottom: 40px;
+      color: #251967;
+      text-align: left;
+      font: 700 4.563em/1em 'Glacial',Arial,sans-serif;
+      text-transform: uppercase;
+      span {
+        display: block;
+        color: #0e7abe;
+        font: 400 73px/1em 'Glacial',Arial,sans-serif;
         text-transform: uppercase;
-        span {
-          display: block;
-          color: #0e7abe;
-          font: 400 73px/1em 'Glacial',Arial,sans-serif;
-          text-transform: uppercase;
-        }
-      }
-    }
-    .about-container {
-      .background {
-        margin: 20px 0;
-      }
-      .title {
-        color: #333;
-        font-weight: 700;
-        font-size: 32px;
-      }
-      p {
-        line-height: 26px;
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-      .icon-box {
-        background-size: cover;
-        padding: 0 0 30px 0;
-        .icon {
-          float: left;
-          background: #fff;
-          width: 64px;
-          height: 64px;
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-pack: center;
-          -webkit-justify-content: center;
-          -ms-flex-pack: center;
-          justify-content: center;
-          -webkit-box-align: center;
-          -webkit-align-items: center;
-          -ms-flex-align: center;
-          align-items: center;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-          flex-direction: column;
-          text-align: center;
-          border-radius: 50%;
-          border: 2px solid #0e7abe;
-          transition: all 0.3s ease-in-out;
-          i {
-            color: #0e7abe;
-            font-size: 24px;
-          }
-        }
-        &:hover .icon {
-          background: #0e7abe;
-          i {
-            color: #fff;
-          }
-        }
-        .title {
-          margin-left: 80px;
-          font-weight: 600;
-          margin-bottom: 5px;
-          font-size: 18px;
-          a {
-            color: #283d50;
-          }
-        }
-        .description {
-          margin-left: 80px;
-          line-height: 24px;
-          font-size: 14px;
-        }
-      }
-    }
-    .about-extra {
-      // padding-top: 60px;
-      h4 {
-        font-weight: 600;
-        font-size: 24px;
       }
     }
   }
+  .about-container {
+    .background {
+      margin: 20px 0;
+    }
+    .title {
+      color: #333;
+      font-weight: 700;
+      font-size: 32px;
+    }
+    p {
+      line-height: 26px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .icon-box {
+      background-size: cover;
+      padding: 0 0 30px 0;
+      .icon {
+        float: left;
+        background: #fff;
+        width: 64px;
+        height: 64px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        text-align: center;
+        border-radius: 50%;
+        border: 2px solid #0e7abe;
+        transition: all 0.3s ease-in-out;
+        i {
+          color: #0e7abe;
+          font-size: 24px;
+        }
+      }
+      &:hover .icon {
+        background: #0e7abe;
+        i {
+          color: #fff;
+        }
+      }
+      .title {
+        margin-left: 80px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        font-size: 18px;
+        a {
+          color: #283d50;
+        }
+      }
+      .description {
+        margin-left: 80px;
+        line-height: 24px;
+        font-size: 14px;
+      }
+    }
+  }
+  .about-extra {
+    // padding-top: 60px;
+    h4 {
+      font-weight: 600;
+      font-size: 24px;
+    }
+  }
+}
