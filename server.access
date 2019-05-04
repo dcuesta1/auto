@@ -1,5 +1,11 @@
 RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{DOCUMENT_ROOT}/repo/public/$0 -f
-    RewriteRule ^.+\.(jpg|jpeg|gif|png|ico|css|js|swf|woff|woff2|ttf|eot)$ /repo/public/$0 [L]
-RewriteRule .* repo/public/ [L]
+
+RewriteCond %{HTTPS} !on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+
+RewriteCond %{REQUEST_URI} !/repo/public/ [NC]
+RewriteRule .* /repo/public/$0 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L]

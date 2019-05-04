@@ -1,0 +1,104 @@
+.dataTables-wrapper {
+
+  .card {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 2rem 0 rgba(0,0,0,.05);
+
+    .card-header{
+      background-color: transparent;
+      border-bottom: none;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      color: #495057;
+    }
+
+    .card-subtitle {
+      font-weight: 400;
+    }
+
+    .card-body {
+      padding-top: .75rem;
+    }
+  }
+
+  .dataTables_length {
+    label {
+      font-weight: 400;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    select {
+      width: auto;
+      display: inline-block;
+      height: calc(1.425rem + 2px);
+      padding-top: .15rem;
+      padding-bottom: .15rem;
+      padding-left: .5rem;
+      font-size: .75rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      vertical-align: middle;
+      //background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' …0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .7rem center/8px 10px;
+      //background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: .2rem;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+  }
+
+  .dataTables_filter {
+    text-align: right;
+
+    label {
+      font-weight: 400;
+      white-space: nowrap;
+      text-align: left;
+
+      input {
+        margin-left: .5em;
+        display: inline-block;
+        width: auto;
+      }
+    }
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa;
+  }
+
+  .dataTable {
+    clear: both;
+    margin-top: 6px!important;
+    margin-bottom: 6px!important;
+    max-width: none!important;
+    border-collapse: separate!important;
+    border-spacing: 0;
+
+    td, th {
+      box-sizing: content-box;
+    }
+  }
+
+  .dataTables_info {
+    padding-top: .85em;
+    white-space: nowrap;
+  }
+
+  .dataTables_paginate {
+    margin: 0;
+    white-space: nowrap;
+    text-align: right;
+
+    .pagination {
+      margin: 2px 0;
+      white-space: nowrap;
+      justify-content: flex-end;
+    }
+  }
+}
