@@ -1,15 +1,24 @@
 import { environment } from '../../environments/environment';
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {User} from '../_models/User';
+import { Observable } from 'rxjs';
+import { LocalStorage } from '../_etc/LocalStorage';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
+
+  public static readonly CURRENTUSER_LOCAL_KEY = 'user';
+  public static readonly IMPERSONATE_LOCAL_KEY = 'im';
+
   public loggedIn: boolean;
   private _isLoading = true;
 
   @Output() loader: EventEmitter<boolean> = new EventEmitter();
+
+  public constructor(private _localStorage: LocalStorage) {}
 
   public getLocationPath() {
     return window.location.pathname.substr(1).split('/');
@@ -23,13 +32,12 @@ export class AppService {
     localStorage.setItem(environment.const.impersonate, JSON.stringify(user));
   }
 
-  public getCurrentUser(toObj: boolean = true): null | User {
-    const currentUser = localStorage.getItem(environment.const.currentUser);
-    return currentUser ? new User(JSON.parse(currentUser)) : null;
+  public getCurrentUser(): Observable<User> {
+    return this._localStorage.getItem(AppService.CURRENTUSER_LOCAL_KEY);
   }
 
-  public setCurrentUser(user: User): void {
-    localStorage.setItem(environment.const.currentUser, JSON.stringify(user));
+  public setCurrentUser(user: User) {
+    return this._localStorage.setItem(AppService.CURRENTUSER_LOCAL_KEY, user);
   }
 
   public removeCurrentUser(): void {

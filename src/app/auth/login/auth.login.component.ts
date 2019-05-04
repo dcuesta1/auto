@@ -17,19 +17,20 @@ export class AuthLoginComponent implements OnInit {
   public loginPage = true;
 
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private appService: AppService,
-    private router: Router
+    private _fb: FormBuilder,
+    private _authService: AuthService,
+    private _appService: AppService,
+    private _router: Router
   ) {
-    const user = appService.getCurrentUser();
-    if (user) {
-      this.router.navigate(['/']);
-    }
+    _appService.getCurrentUser().subscribe( user => {
+      if (user) {
+        this._router.navigate(['/']);
+      }
+    });
   }
 
   ngOnInit() {
-    this.form = this.fb.group({
+    this.form = this._fb.group({
       email: ['', [Validators.required, EmailValidator]],
       password: ['', Validators.required]
     });
@@ -40,15 +41,15 @@ export class AuthLoginComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       const input = this.form.value;
-      this.authService.authenticate(input.email, input.password)
+      this._authService.authenticate(input.email, input.password)
         .subscribe(
-          (user: User) => {
+          (user) => {
             const currentUser = new User(user, true);
-            console.log(currentUser);
-            this.appService.setCurrentUser(currentUser);
-            this.router.navigate(['/']);
+            this._appService.setCurrentUser(currentUser).subscribe( () => {
+              this._router.navigate(['/']);
+            });
           },
-          error => {
+          (err) => {
             this.error = true;
           }
         );

@@ -3,6 +3,7 @@ import {AppService} from '../../_services/app.service';
 import {User} from '../../_models/User';
 import {AuthService} from '../../_services/auth.service';
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-topbar',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
-  public currentUser: User;
+  public currentUser$: Observable<User>;
 
   constructor(
     private appService: AppService,
@@ -18,7 +19,7 @@ export class TopbarComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.currentUser = new User(this.appService.getCurrentUser());
+    this.currentUser$ = this.appService.getCurrentUser();
   }
 
   signOut() {

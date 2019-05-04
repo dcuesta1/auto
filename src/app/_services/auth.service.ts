@@ -12,17 +12,16 @@ export class AuthService {
   private device: string;
 
   constructor(
-    private router: Router,
-    private http: HttpClient,
-    private appService: AppService
+    private _http: HttpClient,
+    private _appService: AppService
   ) {}
 
   setDevice(): void {
-    this.device = this.appService.getDeviceId();
+    this.device = this._appService.getDeviceId();
 
     if (!this.device) {
       this.device =  (Math.random() + + new Date()).toString(36).replace('.', '');
-      this.appService.setDeviceId(this.device);
+      this._appService.setDeviceId(this.device);
     }
   }
 
@@ -30,18 +29,18 @@ export class AuthService {
     this.setDevice();
     const device = this.device;
 
-    return this.http.post<User>('/authenticate', { email , password, device});
+    return this._http.post<User>('/authenticate', { email , password, device});
   }
 
   register(user: User) {
     this.setDevice();
     const device = this.device;
 
-    return this.http.post<User>('/register', {user, device});
+    return this._http.post<User>('/register', {user, device});
   }
 
   destroy() {
-    const token = this.appService.getAuthToken();
-    return this.http.post('/signout', {token});
+    const token = this._appService.getAuthToken();
+    return this._http.post('/signout', {token});
   }
 }

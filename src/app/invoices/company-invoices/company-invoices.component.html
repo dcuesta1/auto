@@ -31,8 +31,7 @@
                 <label>
                   Show
                   <select [(ngModel)]="limit" aria-controls="datatables-basic"
-                          class="custom-select custom-select-sm form-control form-control-sm"
-                          name="datatables-basic_length">
+                    class="custom-select custom-select-sm form-control form-control-sm" name="datatables-basic_length">
                     <option [value]="10" selected>10</option>
                     <option [value]="25">25</option>
                     <option [value]="50">50</option>
@@ -61,7 +60,7 @@
               <div class="dataTables_filter" id="datatables-basic_filter">
                 <label>Search:
                   <input (keyup)="updateFilter($event)" class="form-control form-control-sm"
-                         placeholder="search by name.." type="search">
+                    placeholder="search by name.." type="search">
                 </label>
               </div>
             </div>
@@ -70,15 +69,8 @@
           <div class="row">
             <div class="col-sm-12">
 
-              <ngx-datatable
-                #table
-                [columnMode]="'force'"
-                [footerHeight]="50"
-                [headerHeight]="50"
-                [limit]="limit"
-                [rowHeight]="'auto'"
-                [rows]='rows'
-                class='material'>
+              <ngx-datatable #table [columnMode]="'force'" [footerHeight]="50" [headerHeight]="50" [limit]="limit"
+                [rowHeight]="'auto'" [rows]='rows' class='material'>
                 [selected]="selected"
                 [selectionType]="'checkbox'"
                 (activate)="onActivate($event)"

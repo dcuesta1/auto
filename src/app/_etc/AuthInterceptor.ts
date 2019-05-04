@@ -8,7 +8,7 @@ import {
   HttpErrorResponse,
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
-import { tap, catchError } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { AppService } from '../_services/app.service';
@@ -20,13 +20,13 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private local: AppService,
     private router: Router,
-  ) {}
+  ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token = this.local.getAuthToken();
 
     if (token) {
-      req = req.clone({ headers: req.headers.set('Authorization', token)});
+      req = req.clone({ headers: req.headers.set('Authorization', token) });
     }
 
     if (!req.headers.has('Content-Type')) {
@@ -34,7 +34,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     req = req.clone({ headers: req.headers.set('Accept', 'application/json') });
-    req = req.clone({url: environment.apiUrl + req.url});
+    req = req.clone({ url: environment.apiUrl + req.url });
 
     return next.handle(req).pipe(
       tap((event: HttpEvent<any>) => {
@@ -46,25 +46,24 @@ export class AuthInterceptor implements HttpInterceptor {
           }
         }
       }, (err: any) => {
-      let errMsg: string;
+        let errMsg: string;
 
-      if (err instanceof HttpErrorResponse) {
-        if (err.status === 401) {
-          this.local.clear();
-          this.router.navigate(['/login']);
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            this.local.clear();
+            this.router.navigate(['/login']);
+          } else {
+            const error = err.message || JSON.stringify(err.error);
+            errMsg = `${err.status} - ${err.statusText || ''} Details: ${err}`;
+          }
+
         } else {
-          const error = err.message || JSON.stringify(err.error);
-          errMsg = `${err.status} - ${err.statusText || ''} Details: ${err}`;
+          errMsg = err.message ? err.message : err.toString();
         }
-
-      }  else {
-        errMsg = err.message ? err.message : err.toString();
-      }
-      return throwError(errMsg);
-    }));
+        return throwError(errMsg);
+      }));
   }
 }
-
 
 export const AuthInterceptorProvider = {
   provide: HTTP_INTERCEPTORS,

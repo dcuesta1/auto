@@ -5,10 +5,11 @@ import {AppService} from '../../_services/app.service';
 import {InvoiceService} from '../../_services/invoice.service';
 
 @Component({
-             selector: 'app-company-invoices',
-             templateUrl: './company-invoices.component.html',
-             styleUrls: ['./company-invoices.component.css']
-           })
+  selector: 'app-company-invoices',
+  templateUrl: './company-invoices.component.html',
+  styleUrls: ['./company-invoices.component.css']
+})
+
 export class CompanyInvoicesComponent implements OnInit {
   public isLoading: boolean;
   public limit = 10;
@@ -22,21 +23,25 @@ export class CompanyInvoicesComponent implements OnInit {
 
   constructor(
     private _appService: AppService,
-    private _invoiceService: InvoiceService
+    private _invoiceService: InvoiceService,
   ) {
-    _invoiceService.companyInvoices().subscribe(
-      (invoices: Invoice[]) => {
+
+    this._invoiceService.companyInvoices()
+      .subscribe( (invoices) => {
         const invoicesArr = [];
         for (const invoice of invoices) {
           invoicesArr.push(new Invoice(invoice, true));
         }
 
-        console.log(invoicesArr);
         this.rows = invoicesArr;
         this.temp = [...invoicesArr];
         this._appService.toggleLoading(false);
-      }
-    );
+      });
+  }
+
+  createInvoice(inputs: any) {
+    this._invoiceService.saveInvoice( new Invoice(inputs) );
+    //subscribe..
   }
 
   updateFilter(event) {
