@@ -5,6 +5,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
+
+/*
+|--------------------------------------------------------------------------
+| TEST Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/pusher', function() {
+    $pusher = new Pusher\Pusher("5dcd40f6ff274f899e99", "fc3efef754d31488360b", "771720", array('cluster' => 'us2'));
+    $pusher->trigger('autoshop-app', 'my-event', array('message' => 'hello world'));
+});
+
 /*
 |--------------------------------------------------------------------------
 | Company Website Routes
