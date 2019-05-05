@@ -16,6 +16,8 @@ export class CompanyInvoicesComponent implements OnInit {
   public temp = [];
   public selected = [];
   public invoice: Invoice;
+  public statusInput = 0;
+  public searchInput = '';
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
@@ -40,15 +42,24 @@ export class CompanyInvoicesComponent implements OnInit {
   }
 
   createInvoice(inputs: any) {
-    this._invoiceService.saveInvoice( new Invoice(inputs) );
-    //subscribe..
+    this._invoiceService.saveInvoice( new Invoice(inputs) ).
+    subscribe( invoice => {
+      this.rows.unshift(invoice);
+    });
   }
 
   updateFilter(event) {
-    const val = event.target.value.toLowerCase();
-    // filter our data
-    const temp = this.temp.filter((d) => {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    const val = this.searchInput.toLowerCase();
+    let temp = this.temp.filter((invoice) => {
+
+      // the type number is lost after value is changed.
+      const parsedStatusFilter = parseInt(this.statusInput.toString(), 10);
+      console.log(parsedStatusFilter);
+      if (parsedStatusFilter == 0) {
+        return (!val || invoice.name.toLowerCase().indexOf(val) !== -1);
+      } else {
+        return (parsedStatusFilter == invoice.statusNumber) && (invoice.name.toLowerCase().indexOf(val) !== -1);
+      }
     });
 
     // update the rows

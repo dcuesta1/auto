@@ -9,6 +9,7 @@ import { LocalStorage } from '../_etc/LocalStorage';
   providedIn: 'root'
 })
 export class AppService {
+  private static readonly AUTH_EXPIRY = 604800000; // 7 days
 
   public static readonly CURRENTUSER_LOCAL_KEY = 'user';
   public static readonly IMPERSONATE_LOCAL_KEY = 'im';
@@ -37,7 +38,7 @@ export class AppService {
   }
 
   public setCurrentUser(user: User) {
-    return this._localStorage.setItem(AppService.CURRENTUSER_LOCAL_KEY, user);
+    return this._localStorage.setItem(AppService.CURRENTUSER_LOCAL_KEY, user, AppService.AUTH_EXPIRY);
   }
 
   public removeCurrentUser(): void {

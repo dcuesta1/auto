@@ -38,7 +38,7 @@ export class InvoicesCacheService {
    * @memberof InvoicesCacheService
    */
   public addInvoice(invoice: Invoice, apiCallback: Observable<Invoice>) {
-    this._cacheService.addTo(InvoicesCacheService.STORAGE_KEY, invoice, apiCallback, true);
+    return this._cacheService.addTo(InvoicesCacheService.STORAGE_KEY, invoice, apiCallback, true);
   }
 
   /**

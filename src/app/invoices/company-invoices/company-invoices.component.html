@@ -40,10 +40,11 @@
                   entries
                 </label>
 
-                <select [(ngModel)]="status">
-                  <option [value]="false">All Invoices</option>
-                  <option [value]="10">Paid</option>
-                  <option [value]="20">Outstanding</option>
+                <select [(ngModel)]="statusInput" (change)="updateFilter($event)">
+                  <option [value]="0">All Invoices</option>
+                  <option [value]="4">Paid</option>
+                  <option [value]="1">Outstanding</option>
+                  <option [value]=8>Cancelled</option>
                 </select>
                 <!--                <div ngbDropdown>-->
                 <!--                  <button ngbDropdownToggle>All Invoices</button>-->
@@ -59,7 +60,7 @@
             <div class="col-sm-12 col-md-6">
               <div class="dataTables_filter" id="datatables-basic_filter">
                 <label>Search:
-                  <input (keyup)="updateFilter($event)" class="form-control form-control-sm"
+                  <input (keyup)="updateFilter($event)" [(ngModel)]="searchInput" class="form-control form-control-sm"
                     placeholder="search by name.." type="search">
                 </label>
               </div>

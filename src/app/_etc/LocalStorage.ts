@@ -9,7 +9,7 @@ import { BaseModel } from '../_models/BaseModel';
 })
 export class LocalStorage {
   private _prefix = '';
-  private _defaultExpires: number = 86400; //24Hrs
+  private _defaultExpires: number = 1800000; //24Hrs
 
   get size(): Observable<number> {
     return of(localStorage.length);
@@ -29,8 +29,6 @@ export class LocalStorage {
 
       try {
         parsedRecord = JSON.parse(unparsed);
-        console.log(parsedRecord);
-        console.log(Date.now())
       } catch (error) {
         return throwError(new Error(`Invalid data in localStorage.`));
       }
