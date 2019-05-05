@@ -3,26 +3,36 @@
 use App\Fee;
 use App\Invoice;
 use Faker\Generator as Faker;
+use Carbon\Carbon;
 
 $factory->define(Invoice::class, function (Faker $faker, $args) {
+    $dueDate = Carbon::now();
+    $dueDate->add(2, 'days');
 
     return [
         'subtotal' => 0.00,
         'total' => 0.00,
+        'amount_paid' => 0.00,
+        'due_date' => $dueDate,
         'number' => App\Invoice::generateNumber($args['customer_id'], $args['user_id']),
         'status' => Invoice::CANCELLED
     ];
 });
 
 $factory->state(App\Invoice::class, 'pending', function () {
+    $dueDate = Carbon::now();
+    $dueDate->add(30, 'days');
+
     return [
-        'status' => Invoice::PENDING_PAYMENT
+        'status' => Invoice::PENDING_PAYMENT,
+        'due_date' => $dueDate
     ];
 });
 
 $factory->state(App\Invoice::class, 'paid', function () {
     return [
-        'status' => Invoice::PAID
+        'status' => Invoice::PAID,
+        'due_date' => Carbon::now()
     ];
 });
 
@@ -71,6 +81,11 @@ $factory->afterCreatingState(App\Invoice::class, 'pending', function ($invoice) 
         'user_id' => 2,
         'amount' => $invoice->total - 100,
     ]));
+
+    $invoice->amount_paid = $invoice->total - 100;
+    $invoice->last_payment_date = Carbon::now();
+
+    $invoice->save();
 });
 
 $factory->afterCreatingState(App\Invoice::class, 'paid', function ($invoice) {
@@ -78,4 +93,9 @@ $factory->afterCreatingState(App\Invoice::class, 'paid', function ($invoice) {
         'user_id' => 2,
         'amount' => $invoice->total
     ]));
+
+    $invoice->amount_paid = $invoice->total;
+    $invoice->last_payment_date = Carbon::now();
+
+    $invoice->save();
 });

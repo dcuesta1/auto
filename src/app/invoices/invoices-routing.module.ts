@@ -20,12 +20,12 @@ const invoicesRoutes: Routes = [
 ];
 
 @NgModule({
-            imports: [
-              RouterModule.forChild(invoicesRoutes)
-            ],
-            exports: [
-              RouterModule
-            ]
-          })
+  imports: [
+    RouterModule.forChild(invoicesRoutes)
+  ],
+  exports: [
+    RouterModule
+  ]
+})
 export class InvoicesRoutingModule {
 }

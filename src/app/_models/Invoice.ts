@@ -7,24 +7,38 @@ import {User} from './User';
 import {Vehicle} from './Vehicle';
 
 export class Invoice extends BaseModel {
-  public static PENDING_PAYMENT = 1;
-  public static ESTIMATE = 2;
-  public static CLOSED = 4;
-  public static CANCELLED = 8;
+  public static readonly PENDING_PAYMENT = 1;
+  public static readonly ESTIMATE = 2;
+  public static readonly CLOSED = 4;
+  public static readonly CANCELLED = 8;
 
   public id: number;
   public number: string;
   public discount: number;
   public total: number;
   public subtotal: number;
-  public statusNumber: number;
+  public status: number;
+  public customerName: string;
+  public customerEmail: string;
+  public amountPaid: number;
+
+  private _fees: Fee[];
+  private _employee: User;
+  private _customer: Customer;
+  private _invoicePayments: InvoicePayment[];
+  private _vehicle: Vehicle;
+  private _items: Item[];
+
+  private _lastPaymentDate: Date;
+  private _dueDate: Date;
+  private _updatedAt: Date;
+  private _createdAt: Date;
+
 
   public constructor(obj: any = null, toCamel: boolean = false) {
     super(obj, toCamel);
-    this.statusNumber = obj.status;
   }
 
-  private _createdAt: Date;
 
   get createdAt(): Date {
     return this._createdAt;
@@ -34,7 +48,6 @@ export class Invoice extends BaseModel {
     this._createdAt = new Date(value);
   }
 
-  private _updatedAt: Date;
 
   get updatedAt(): Date {
     return this._updatedAt;
@@ -44,7 +57,22 @@ export class Invoice extends BaseModel {
     this._updatedAt = new Date(value);
   }
 
-  private _employee: User;
+  get dueDate(): Date {
+    return this._dueDate;
+  }
+
+  set dueDate(value) {
+    this._dueDate = new Date(value);
+  }
+
+  get lastPaymentDate(): Date {
+    return this._lastPaymentDate;
+  }
+
+  set lastPaymentDate(value) {
+    this._lastPaymentDate = new Date(value);
+  }
+
 
   get employee(): User {
     return this._employee;
@@ -54,8 +82,6 @@ export class Invoice extends BaseModel {
     this._employee = new User(value, true);
   }
 
-  private _customer: Customer;
-
   get customer(): Customer {
     return this._customer;
   }
@@ -63,8 +89,6 @@ export class Invoice extends BaseModel {
   set customer(value: Customer) {
     this._customer = new Customer(value, true);
   }
-
-  private _fees: Fee[];
 
   get fees(): Fee[] {
     return this._fees;
@@ -80,8 +104,6 @@ export class Invoice extends BaseModel {
     this._fees = feeArr;
   }
 
-  private _invoicePayments: InvoicePayment[];
-
   get invoicePayments(): InvoicePayment[] {
     return this._invoicePayments;
   }
@@ -96,8 +118,6 @@ export class Invoice extends BaseModel {
     this._invoicePayments = invoicePaymentsArr;
   }
 
-  private _vehicle: Vehicle;
-
   get vehicle(): Vehicle {
     return this._vehicle;
   }
@@ -105,8 +125,6 @@ export class Invoice extends BaseModel {
   set vehicle(value: Vehicle) {
     this._vehicle = new Vehicle(value, true);
   }
-
-  private _items: Item[];
 
   get items(): Item[] {
     return this._items;
@@ -122,13 +140,6 @@ export class Invoice extends BaseModel {
     this._items = itemsArr;
   }
 
-  get name() {
-    return this.customer.name;
-  }
-
-  set name(v) {
-  }
-
   get date() {
     return this._createdAt.getDay();
   }
@@ -136,27 +147,24 @@ export class Invoice extends BaseModel {
   set date(v) {
   }
 
-  get status() {
+  get statusName() {
     let statusText: string;
 
-    switch (this.statusNumber) {
+    switch (this.status) {
       case Invoice.PENDING_PAYMENT:
-        statusText = 'pending payment';
+        statusText = 'pending';
         break;
       case Invoice.ESTIMATE:
         statusText = 'estimate';
         break;
       case Invoice.CLOSED:
-        statusText = 'closed';
+        statusText = 'paid';
         break;
       case Invoice.CANCELLED:
-        statusText = 'cancelled';
+        statusText = 'canceled';
         break;
     }
 
     return statusText;
-  }
-
-  set status(value) {
   }
 }

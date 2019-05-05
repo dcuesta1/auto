@@ -23,7 +23,7 @@ export class User extends BaseModel {
   }
 
   get updatedAt(): Date {
-    return this._createdAt;
+    return this._updatedAt;
   }
 
   set updatedAt(value) {

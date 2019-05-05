@@ -9,15 +9,15 @@ import {InvoicesRoutingModule} from './invoices-routing.module';
 import {SingleInvoiceComponent} from './single-invoice/single-invoice.component';
 
 @NgModule({
-            imports: [
-              CommonModule,
-              FormsModule,
-              ReactiveFormsModule,
-              HttpClientModule,
-              NgxDatatableModule,
-              InvoicesRoutingModule
-            ],
-            declarations: []
-          })
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxDatatableModule,
+    InvoicesRoutingModule
+  ],
+  declarations: []
+})
 export class InvoicesModule {
 }

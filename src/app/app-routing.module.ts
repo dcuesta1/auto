@@ -8,7 +8,6 @@ import {RecoverPasswordComponent} from './auth/recover-password/recover-password
 import {CompanyCustomersComponent} from './customers/company-customers/company-customers.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {CompanyInvoicesComponent} from './invoices/company-invoices/company-invoices.component';
-import {SingleInvoiceComponent} from './invoices/single-invoice/single-invoice.component';
 import {SelectivePreloadingStrategyService} from './selective-preloading-strategy.service';
 
 const appRoutes: Routes = [
@@ -31,10 +30,6 @@ const appRoutes: Routes = [
           {
             path: '',
             component: CompanyInvoicesComponent
-          },
-          {
-            path: ':id',
-            component: SingleInvoiceComponent
           }
         ]
       }
@@ -57,18 +52,18 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-            imports: [
-              RouterModule.forRoot(
-                appRoutes,
-                {
-                  enableTracing: false, // <-- debugging purposes only
-                  preloadingStrategy: SelectivePreloadingStrategyService
-                }
-              )
-            ],
-            exports: [
-              RouterModule
-            ]
-          })
+  imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      {
+        enableTracing: false, // <-- debugging purposes only
+        preloadingStrategy: SelectivePreloadingStrategyService
+      }
+    )
+  ],
+  exports: [
+    RouterModule
+  ]
+})
 export class AppRoutingModule {
 }

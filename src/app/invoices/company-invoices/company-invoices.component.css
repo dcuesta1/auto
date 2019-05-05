@@ -1,16 +1,20 @@
 .invoice-status-estimate {
   color: blue;
+  text-transform: capitalize;
 }
 
 .invoice-status-pending {
   color: red;
+  text-transform: capitalize;
 }
 
-.invoice-status-cancelled {
+.invoice-status-canceled {
   color: gray;
+  text-transform: capitalize;
 }
 
-.invoice-status-closed {
+.invoice-status-paid {
   color: green;
+  text-transform: capitalize;
 }
 

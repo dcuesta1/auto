@@ -83,6 +83,17 @@
     td, th {
       box-sizing: content-box;
     }
+
+    tr.clickable  {
+        cursor: pointer;
+        &:hover {
+            background-color: blue;
+        }
+    }
+
+    td {
+        text-align: right !important;
+    }
   }
 
   .dataTables_info {
@@ -99,6 +110,40 @@
       margin: 2px 0;
       white-space: nowrap;
       justify-content: flex-end;
+
+      ul {
+          list-style: none;
+
+          li {
+              display: inline;
+          }
+      }
     }
   }
 }
+
+.custom-day {
+      text-align: center;
+      padding: 0.185rem 0.25rem;
+      display: inline-block;
+      height: 2rem;
+      width: 2rem;
+    }
+    .custom-day.focused {
+      background-color: #e6e6e6;
+    }
+    .custom-day.range, .custom-day:hover {
+      background-color: rgb(2, 117, 216);
+      color: white;
+    }
+    .custom-day.faded {
+      background-color: rgba(2, 117, 216, 0.5);
+    }
+
+    button.calendar{
+            width: 2.75rem;
+    // background-image: url(data:image/png;base64,https://ng-bootstrap.github.io/iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCS…nlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=)!important;
+    background-repeat: no-repeat;
+    background-size: 23px;
+    background-position: center;
+    }

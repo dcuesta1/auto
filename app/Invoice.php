@@ -22,7 +22,8 @@ class Invoice extends Model
         'vehicle_id' => 'integer',
         'status' => 'integer',
         'subtotal' => 'float',
-        'total' => 'float'
+        'total' => 'float',
+        'amount_paid' => 'float'
     ];
 
     // RELATIONSHIPS

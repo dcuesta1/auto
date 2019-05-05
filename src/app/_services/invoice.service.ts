@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { InvoicesCacheService } from '../_cache/invoices-cache.service';
 import { Invoice } from '../_models/Invoice';
 import { AppService } from './app.service';
@@ -29,7 +30,16 @@ export class InvoiceService {
    */
   public companyInvoices(): Observable<Invoice[]> {
     const apiFallback = this._http.get<Invoice[]>(`/company/${this._companyId}/invoices`);
-    return this._invoiceCache.getSetInvoices(apiFallback);
+    return this._invoiceCache.getSetInvoices(apiFallback).pipe(
+      map( invoices => {
+        const invArray = [];
+        for (const invoice of invoices) {
+          invArray.push(new Invoice(invoice, true));
+        }
+
+        return invArray;
+      })
+    );
   }
 
   public saveInvoice(invoice: Invoice) {

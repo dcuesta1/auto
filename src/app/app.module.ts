@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbDropdownModule,
+  NgbModalModule,
+  NgbPaginationModule,
+  NgbDatepickerModule
+} from '@ng-bootstrap/ng-bootstrap';
 
 // Routes
-import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AuthInterceptorProvider} from './_etc/AuthInterceptor';
@@ -46,11 +50,14 @@ import {SingleInvoiceComponent} from './invoices/single-invoice/single-invoice.c
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxDatatableModule,
     NgbDropdownModule,
+    NgbModalModule,
+    NgbPaginationModule,
+    NgbDatepickerModule,
     AppRoutingModule
     // InvoicesModule
   ],
+  entryComponents: [SingleInvoiceComponent],
   providers: [AuthInterceptorProvider],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

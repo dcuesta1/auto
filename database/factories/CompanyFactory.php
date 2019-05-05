@@ -37,7 +37,7 @@ $factory->afterCreating(App\Company::class, function ($company) {
     $company->fees()->save(factory(Fee::class)->make());
     $company->fees()->save(factory(Fee::class)->states('tax')->make());
 
-    factory(App\Customer::class, 1)
+    factory(App\Customer::class, 20)
         ->make()
         ->each(function ($customer) use ($company) {
 
@@ -47,25 +47,33 @@ $factory->afterCreating(App\Company::class, function ($company) {
             factory(App\Invoice::class)->create([
                 'vehicle_id' => $car->id,
                 'user_id' => 2,
-                'customer_id' => $customer->id
+                'customer_id' => $customer->id,
+                'customer_name' => "$customer->first_name $customer->last_name",
+                'customer_email' => $customer->email
             ]);
 
             factory(App\Invoice::class)->states('estimate')->create([
                 'vehicle_id' => $car->id,
                 'user_id' => 2,
-                'customer_id' => $customer->id
+                'customer_id' => $customer->id,
+                'customer_name' => "$customer->first_name $customer->last_name",
+                'customer_email' => $customer->email
             ]);
 
             factory(App\Invoice::class)->states('pending')->create([
                 'vehicle_id' => $car->id,
                 'user_id' => 2,
-                'customer_id' => $customer->id
+                'customer_id' => $customer->id,
+                'customer_name' => "$customer->first_name $customer->last_name",
+                'customer_email' => $customer->email
             ]);
 
             factory(App\Invoice::class)->states('paid')->create([
                 'vehicle_id' => $car->id,
                 'user_id' => 2,
-                'customer_id' => $customer->id
+                'customer_id' => $customer->id,
+                'customer_name' => "$customer->first_name $customer->last_name",
+                'customer_email' => $customer->email
             ]);
         });
 });

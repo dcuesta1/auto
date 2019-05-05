@@ -20,10 +20,15 @@ class CreateInvoicesTable extends Migration
             $table->bigInteger('customer_id');
             $table->bigInteger('vehicle_id');
             $table->string('number', 20);
+            $table->string('customer_name');
+            $table->string('customer_email');
             $table->float('discount')->default(0.00);
             $table->float('subtotal')->default(0.00);
             $table->float('total')->default(0.00);
+            $table->float('amount_paid')->default(0.00);
             $table->tinyInteger('status')->default(Invoice::ESTIMATE);
+            $table->timestamp('due_date')->nullable();
+            $table->timestamp('last_payment_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
