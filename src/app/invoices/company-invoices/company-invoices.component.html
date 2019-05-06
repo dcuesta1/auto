@@ -17,13 +17,13 @@
       </div>
 
       <div class="header-stats col-sm-12 col-md-8">
-        <div class="header-stat clickable">
+        <div class="header-stat clickable" (click)="lastThirtyDaysFilter()">
           <div class="header-stat-value">${{ totalInvoicedLastThirtyDays | number: '1.2-2' }}</div>
           <div class="header-stat-label">
             <span class="small-caps">Invoices({{ invoicesLastThirtyDays }}) (last 30 days)</span>
           </div>
         </div>
-        <div class="header-stat clickable" (click)="statusInput == 1; updateFilter(1)">
+        <div class="header-stat clickable" (click)="resetFilters(); statusInput = parseInt(1); updateFilter(1)">
           <div class="header-stat-value">${{ outstanding | number: '1.2-2' }}</div>
           <div class="header-stat-label">
             <span class="small-caps">Outstanding ({{ outstandingInvoices }})</span>

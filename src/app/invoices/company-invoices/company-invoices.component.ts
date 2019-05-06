@@ -149,39 +149,65 @@ export class CompanyInvoicesComponent implements OnInit {
   }
 
   public updateFilter(event) {
-    const val = this.searchInput.toLowerCase();
+    const searchInput = this.searchInput.toLowerCase();
+    const statusInput = parseInt(this.statusInput.toString(), 10);
+    const now = new Date();
+    const fromDate = this.fromDate ? new Date(this.fromDate.year, this.fromDate.month - 1, this.fromDate.day)
+      : new Date(1994, 5, 31);
+    const toDate = this.toDate ? new Date(this.toDate.year, this.toDate.month - 1, this.toDate.day)
+      : new Date(now.getFullYear() + 1, 1, 12);
+
     let temp = this.temp.filter((invoice) => {
-      const parsedStatusFilter = parseInt(this.statusInput.toString(), 10);
       const yearModel = `${invoice.vehicle.year} ${invoice.vehicle.model}`;
-      const now = new Date();
-      let fromDate = new Date(1994, 5, 31); // hack
-      let toDate = new Date(now.getFullYear() + 1, 1, 12);
 
-      if (this.fromDate) {
-        fromDate = new Date(this.fromDate.year, this.fromDate.month - 1, this.fromDate.day);
-        toDate = this.toDate ? new Date(this.toDate.year, this.toDate.month - 1, this.toDate.day) : null ;
-      }
-
-      // Check: can we compress or make it easier to read without making big blocks;
-      return (!val || invoice.customerName.toLowerCase().indexOf(val) !== -1 ||
-          invoice.number.toLowerCase().indexOf(val) !== -1  ||
-          yearModel.toLowerCase().indexOf(val) !== -1) &&
+      return (
+          !searchInput ||
+          invoice.customerName.toLowerCase().indexOf(searchInput) !== -1 ||
+          invoice.number.toLowerCase().indexOf(searchInput) !== -1 ||
+          yearModel.toLowerCase().indexOf(searchInput) !== -1
+        ) &&
+        (
+          statusInput == 0 || invoice.status == statusInput
+        ) &&
         ( (toDate &&
           fromDate.getTime() <= invoice.createdAt.getTime() &&
           invoice.createdAt.getTime() <= toDate.getTime() ) ||
-        ( !toDate &&
+          (!toDate &&
           (fromDate.getFullYear() == invoice.createdAt.getFullYear() &&
           fromDate.getMonth() == invoice.createdAt.getMonth() &&
           fromDate.getDate() == invoice.createdAt.getDate())
-        )) &&
-        ( parsedStatusFilter == 0 || parsedStatusFilter == invoice.status);
+        ));
     });
 
     this.invoices = temp;
     this.page = 1;
   }
 
+  private resetFilters() {
+    this.searchInput = '';
+    this.statusInput = 0;
+    this.fromDate = null;
+    this.toDate = null;
+    this.dateFilter = 'all time';
+  }
+
   // Click action methods
+  public lastThirtyDaysFilter() {
+    this.resetFilters();
+
+    const today = new Date();
+    const x = new Date().setDate(today.getDate() - 30)
+    const fromDate = new Date(x);
+
+    this.fromDate = new NgbDate(fromDate.getFullYear(), fromDate.getMonth()+1, fromDate.getDate());
+    this.toDate = new NgbDate(today.getFullYear(), today.getMonth()+1, today.getDate());
+
+    this.dateFilter = `${this.fromDate.month}/${this.fromDate.day}/${this.fromDate.year} `;
+    this.dateFilter += this.toDate ? `- ${this.toDate.month}/${this.toDate.day}/${this.toDate.year}` : '';
+
+    this.updateFilter(1);
+  }
+
   public openCreateInvoiceForm() {
 
   }
@@ -210,8 +236,8 @@ export class CompanyInvoicesComponent implements OnInit {
     }
 
     this.updateFilter(1);
-    this.dateFilter = `${this.fromDate.day}/${this.fromDate.month}/${this.fromDate.year} `;
-    this.dateFilter += this.toDate ? `- ${this.toDate.day}/${this.toDate.month}/${this.toDate.year}` : '';
+    this.dateFilter = `${this.fromDate.month}/${this.fromDate.day}/${this.fromDate.year} `;
+    this.dateFilter += this.toDate ? `- ${this.toDate.month}/${this.toDate.day}/${this.toDate.year}` : '';
   }
 
   public datepickerFilter(filter: string) {
