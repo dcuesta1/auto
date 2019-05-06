@@ -3,9 +3,15 @@
   text-transform: capitalize;
 }
 
-.invoice-status-pending {
+.invoice-status-outstanding {
   color: red;
   text-transform: capitalize;
+}
+
+.invoice-status-overdue {
+  color: red;
+  text-transform: capitalize;
+  font-weight: bold;
 }
 
 .invoice-status-canceled {
@@ -18,3 +24,24 @@
   text-transform: capitalize;
 }
 
+.header-stats {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.header-stat-value{
+    color: #eaf0f7;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.header-stat-label {
+    color: #c8d2dc;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.667;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}

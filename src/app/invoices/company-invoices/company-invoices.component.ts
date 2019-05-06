@@ -26,15 +26,18 @@ export class CompanyInvoicesComponent implements OnInit {
   public hoveredDate: NgbDate;
   public fromDate: NgbDate;
   public toDate: NgbDate;
+  public dateFilter = 'all time';
 
   // Sorting Helpers
   public sortDate = 'asc';
   public sortName = 'des';
   public sortAmount = 'asc';
 
-  // Rendered
+  // Rendered stats
   public outstanding = 0;
-  public recentlyPaid = 0;
+  public invoicesLastThirtyDays = 0;
+  public outstandingInvoices = 0;
+  public totalInvoicedLastThirtyDays = 0;
 
   constructor(
     private _appService: AppService,
@@ -42,25 +45,18 @@ export class CompanyInvoicesComponent implements OnInit {
     private _modalService: NgbModal,
     public calendar: NgbCalendar
   ) {
-    // this.fromDate = calendar.getToday();
-    ///this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
-  }
-
-  public ngOnInit() {
     this._invoiceService.companyInvoices().subscribe(invoices => {
       for (const invoice of invoices) {
-        const monthAgo = Date.now() - 2592000000;
+        const monthAgo = Date.now() - 2592000000; // 30 days
         const parsedInvoice = invoice;//new Invoice(invoice, true)
 
-        if (parsedInvoice.lastPaymentDate.getTime() > monthAgo) {
-          for (const payment of parsedInvoice.invoicePayments) {
-            if (payment.createdAt.getTime() > monthAgo) {
-              this.recentlyPaid += payment.amount;
-            }
-          }
+        if (parsedInvoice.createdAt.getTime() > monthAgo) {
+            this.invoicesLastThirtyDays++
+            this.totalInvoicedLastThirtyDays += parsedInvoice.total;
         }
 
         if (parsedInvoice.status === Invoice.PENDING_PAYMENT) {
+          this.outstandingInvoices++;
           this.outstanding += parsedInvoice.total - parsedInvoice.amountPaid;
         }
       }
@@ -71,6 +67,7 @@ export class CompanyInvoicesComponent implements OnInit {
     });
   }
 
+  // TODO: clean up sorting functions
   public amountSortToggle() {
     if ( this.sortAmount == 'des') {
       this.invoices.sort((a, b) => {
@@ -155,12 +152,29 @@ export class CompanyInvoicesComponent implements OnInit {
     const val = this.searchInput.toLowerCase();
     let temp = this.temp.filter((invoice) => {
       const parsedStatusFilter = parseInt(this.statusInput.toString(), 10);
+      const yearModel = `${invoice.vehicle.year} ${invoice.vehicle.model}`;
+      const now = new Date();
+      let fromDate = new Date(1994, 5, 31); // hack
+      let toDate = new Date(now.getFullYear() + 1, 1, 12);
 
-      if (parsedStatusFilter == 0) {
-        return (!val || invoice.customerName.toLowerCase().indexOf(val) !== -1);
-      } else {
-        return (parsedStatusFilter == invoice.status) && (!val || invoice.customerName.toLowerCase().indexOf(val) !== -1);
+      if (this.fromDate) {
+        fromDate = new Date(this.fromDate.year, this.fromDate.month - 1, this.fromDate.day);
+        toDate = this.toDate ? new Date(this.toDate.year, this.toDate.month - 1, this.toDate.day) : null ;
       }
+
+      // Check: can we compress or make it easier to read without making big blocks;
+      return (!val || invoice.customerName.toLowerCase().indexOf(val) !== -1 ||
+          invoice.number.toLowerCase().indexOf(val) !== -1  ||
+          yearModel.toLowerCase().indexOf(val) !== -1) &&
+        ( (toDate &&
+          fromDate.getTime() <= invoice.createdAt.getTime() &&
+          invoice.createdAt.getTime() <= toDate.getTime() ) ||
+        ( !toDate &&
+          (fromDate.getFullYear() == invoice.createdAt.getFullYear() &&
+          fromDate.getMonth() == invoice.createdAt.getMonth() &&
+          fromDate.getDate() == invoice.createdAt.getDate())
+        )) &&
+        ( parsedStatusFilter == 0 || parsedStatusFilter == invoice.status);
     });
 
     this.invoices = temp;
@@ -195,8 +209,58 @@ export class CompanyInvoicesComponent implements OnInit {
       this.fromDate = date;
     }
 
-    console.log(this.toDate);
-    console.log(this.fromDate);
+    this.updateFilter(1);
+    this.dateFilter = `${this.fromDate.day}/${this.fromDate.month}/${this.fromDate.year} `;
+    this.dateFilter += this.toDate ? `- ${this.toDate.day}/${this.toDate.month}/${this.toDate.year}` : '';
+  }
+
+  public datepickerFilter(filter: string) {
+    this.dateFilter = filter;
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const lastDayInMonth = new Date(year, month + 1, 0).getDate();
+    const day = today.getDay(); // 0-6 sun-sat
+
+    switch ( filter ) {
+      case 'all time' :
+        this.fromDate = null;
+        this.toDate = null;
+        break;
+      case 'this week':
+        let lastDayOfWeek = ( (6+1) - day) + today.getDate();
+        let toMonth = month;
+        if (lastDayOfWeek > lastDayInMonth ) {
+          lastDayOfWeek = lastDayOfWeek - lastDayInMonth;
+          toMonth = month + 1;
+        }
+
+        let firstDayOfWeek = today.getDate() - (day - 1);
+        let fromMonth = month;
+        if (firstDayOfWeek <= 0) {
+          const lastDayOfPrevMonth = new Date(year, month -1, 0).getDate();
+          firstDayOfWeek = lastDayOfPrevMonth + firstDayOfWeek;
+          fromMonth = month - 1;
+        }
+
+        this.toDate = new NgbDate(year, toMonth, lastDayOfWeek);
+        this.fromDate = new NgbDate(year, fromMonth, firstDayOfWeek);
+        break;
+      case 'this month':
+        this.toDate = new NgbDate(year, month, lastDayInMonth);
+        this.fromDate = new NgbDate(year, month, 1);
+        break;
+      case 'this year':
+        this.toDate = new NgbDate(year, 12, 31);
+        this.fromDate = new NgbDate(year, 1, 1);
+        break;
+      case 'last year':
+        this.toDate = new NgbDate(year-1, 12, 31);
+        this.fromDate = new NgbDate(year-1, 1, 1);
+        break;
+    }
+
+    this.updateFilter(1);
   }
 
   public isHovered(date: NgbDate) {
@@ -216,4 +280,5 @@ export class CompanyInvoicesComponent implements OnInit {
     return parseInt(x, y);
   }
 
+  public ngOnInit() { }
 }

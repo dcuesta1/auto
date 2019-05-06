@@ -152,7 +152,10 @@ export class Invoice extends BaseModel {
 
     switch (this.status) {
       case Invoice.PENDING_PAYMENT:
-        statusText = 'pending';
+        statusText = 'outstanding';
+        if (this.dueDate.getTime() < Date.now()) {
+          statusText = 'overdue';
+        }
         break;
       case Invoice.ESTIMATE:
         statusText = 'estimate';
